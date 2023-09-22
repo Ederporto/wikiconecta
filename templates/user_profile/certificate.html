@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="w3-container">
+        <h1>{% trans "WikiConecta's certificates" %}</h1>
+        <div class="w3-container">
+            <h2>{% trans "Enrollment letter" %}</h2>
+            <div class="block">
+                {% trans "If you are enrolled in WikiConecta, you can download a letter declaring this statement." %}
+            </div>
+            <div class="block">
+                {% if user_is_registered %}
+                    <a class="custom_button yellow" href="{% url 'enrollment_letter' %}">
+                        {% trans "Download enrollment letter" %}
+                    </a>
+                {% else %}
+                    <a class="custom_button yellow" href="https://pt.wikiversity.org/wiki/WikiConecta/Inscrição">
+                        {% trans "You have to enroll in the course first" %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="w3-container">
+            <h2>{% trans "Certificate of completion" %}</h2>
+            <div class="block">
+                {% trans "If you are enrolled and finished the readings and activities proposed, you can paste the links to the activities and request a certificate of completion of WikiConecta." %}
+            </div>
+            {% if user_is_registered %}
+                {% if user_requested_certificate %}
+                    <div class="purple_block">{% blocktrans with formatted_date=date_of_request|date:"Y-m-d H:i:s" %}You solicited the certificate of completion at {{ formatted_date }}.{% endblocktrans %}</div>
+                    <div class="block"><a class="custom_button yellow" href="{% url 'change_links' next_url='certificate' %}" aria-label="{% trans 'Update links submitted' %}">{% trans "Update links of your submission" %}</a></div>
+                {% endif %}
+
+                {% if not user_requested_certificate %}
+                    <form method="post" class="custom_form">
+                        {% csrf_token %}
+                        <input type="hidden" name="form-TOTAL_FORMS" value="6" id="id_form-TOTAL_FORMS">
+                        <input type="hidden" name="form-INITIAL_FORMS" value="6" id="id_form-INITIAL_FORMS">
+                        <input type="hidden" name="form-MIN_NUM_FORMS" value="6" id="id_form-MIN_NUM_FORMS">
+                        <input type="hidden" name="form-MAX_NUM_FORMS" value="6" id="id_form-MAX_NUM_FORMS">
+                        <label for="id_form-0-link">{% trans "Module 'Wikipedia' activity link:" %}</label>
+                        <input id="id_form-0-link" type="url" aria-label="{% trans 'URL of the activity of the second module' %}" name="form-0-link" required value="{{ formset.forms.0.link.value }}">
+                        <label for="id_form-1-link">{% trans "Module 'Wikidata' activity link:" %}</label>
+                        <input id="id_form-1-link" type="url" aria-label="{% trans 'URL of the activity of the third module' %}" name="form-1-link" required value="{{ formset.forms.1.link.value }}">
+                        <label for="id_form-2-link">{% trans "Module 'Wikimedia Commons' activity link:" %}</label>
+                        <input id="id_form-2-link" type="url" aria-label="{% trans 'URL of the activity of the fourth module' %}" name="form-2-link" required value="{{ formset.forms.2.link.value }}">
+                        <label for="id_form-3-link">{% trans "Module 'Wikiversity' activity link:" %}</label>
+                        <input id="id_form-3-link" type="url" aria-label="{% trans 'URL of the activity of the fifth module' %}" name="form-3-link" required value="{{ formset.forms.3.link.value }}">
+                        <label for="id_form-4-link">{% trans "Module 'Education programs' activity link:" %}</label>
+                        <input id="id_form-4-link" type="url" aria-label="{% trans 'URL of the activity of the sixth module' %}" name="form-4-link" required value="{{ formset.forms.4.link.value }}">
+                        <input class="custom_button_submitt" type="submit" value="{% trans 'Solicit certificate of completion' %}">
+                    </form>
+                {% endif %}
+            {% else %}
+                <div class="block">
+                    <a class="custom_button yellow" href="https://pt.wikiversity.org/wiki/WikiConecta/Inscrição">
+                        {% trans "You have to enroll in the course first" %}
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

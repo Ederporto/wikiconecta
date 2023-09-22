@@ -1,0 +1,50 @@
+[
+  {
+    "model": "certificate.coursemodule",
+    "pk": 1,
+    "fields": {
+      "name": "Introduction",
+      "order": 1
+    }
+  },
+  {
+    "model": "certificate.coursemodule",
+    "pk": 2,
+    "fields": {
+      "name": "Wikipedia",
+      "order": 2
+    }
+  },
+  {
+    "model": "certificate.coursemodule",
+    "pk": 3,
+    "fields": {
+      "name": "Wikidata",
+      "order": 3
+    }
+  },
+  {
+    "model": "certificate.coursemodule",
+    "pk": 4,
+    "fields": {
+      "name": "Wikimedia Commons",
+      "order": 4
+    }
+  },
+  {
+    "model": "certificate.coursemodule",
+    "pk": 5,
+    "fields": {
+      "name": "Wikiversity",
+      "order": 5
+    }
+  },
+  {
+    "model": "certificate.coursemodule",
+    "pk": 6,
+    "fields": {
+      "name": "Education programs",
+      "order": 6
+    }
+  }
+]

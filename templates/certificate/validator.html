@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans 'Validation' %}{% endblock %}
+{% block content %}
+    <div class="w3-container">
+        <h1>{% trans "Document validation" %}</h1>
+        <div style="display:flex; flex-direction:column;">
+            <p>{% trans "On this page we offer the possibility of checking the authenticity of the documents issued relating to the WikiConecta course." %}</p>
+            <p><label for="hash">{% trans "Type or paste the 40-character VALIDATION CODE below:" %}</label></p>
+        </div>
+        <div class="w3-container">
+            <form method="post" class="custom_form">
+                {% csrf_token %}
+                <input id="hash" type="text" name="hash" maxlength="40" minlength="40" required>
+                <input class="custom_button_submitt" type="submit" value="{% trans 'Validate' %}">
+            </form>
+        </div>
+    </div>
+{% endblock %}

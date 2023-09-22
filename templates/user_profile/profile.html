@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="w3-container">
+        <h1>{% trans "Your profile" %}</h1>
+        <div class="w3-container">
+            <form method="post" class="custom_form">
+                {% csrf_token %}
+                <label for="id_first_name">{% trans "First name:" %}</label>
+                {{ form.first_name }}
+                <label for="id_last_name">{% trans "Last name:" %}</label>
+                {{ form.last_name }}
+                <label for="id_email">{% trans "Email:" %}</label>
+                {{ form.email }}
+                <label for="username">{% trans "Username:" %}</label>
+                <input id="username" type="text" name="username" value="{{ username }}" disabled="disabled">
+                <label for="is_student">
+                    <input id="is_student" type="checkbox" name="is_student" {% if is_student %}checked{% endif %} disabled="disabled">
+                    {% trans "Is enrolled in?" %}
+                    {% if not is_student %}{% blocktrans %}<span class="red_fill">You are not <a target="_blank" href="https://pt.wikiversity.org/wiki/WikiConecta/Inscrição">registered in WikiConecta</a>.</span>{% endblocktrans %}{% endif %}
+                </label>
+                <label for="date_of_modification">{% trans "Last time of modification in this profile:" %}</label>
+                <input id="date_of_modification" type="datetime-local" name="date_of_modification" value="{{ date_of_modification }}" disabled="disabled">
+                <input class="custom_button_submitt" type="submit" value="{% trans 'Update' %}">
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+/* HTML ELEMENTS */
+:root {
+    --purple: rgb(74, 81, 210);
+    --dark-purple: rgb(37, 41, 107);
+    --cyan: rgb(89, 178, 239);
+    --pink: rgb(195, 0, 65);
+    --orange: rgb(253, 150, 68);
+    --yellow: rgb(253, 189, 71);
+    --black: rgb(0, 0, 0);
+    --light-grey: rgb(220, 220, 220);
+    --main-font: 'Baloo 2', cursive;
+}
+
+body {
+    font-size: 1em;
+    height: 100vh;
+    padding: 0 !important;
+    margin: 0;
+    overflow: hidden;
+}
+
+main {
+    overflow-y:auto;
+    flex:1 0;
+    padding:1em !important;
+}
+
+.navbar_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    text-align: center;
+    flex-basis: 19em;
+    background-color: gainsboro;
+    overflow-y: auto;
+}
+.w3-container { padding:0; margin-bottom:1em; }
+
+.nav_block { display:block; padding:1em 0; transition:all 500ms ease-in-out; text-decoration:none; }
+.navbar_title { font-family:"Baloo 2", sans-serif; display:block; color:var(--purple); transition:all 500ms ease-in-out; }
+.navbar_title_small { font-family:"Baloo 2", sans-serif; display:block; color:var(--pink); font-size:0.85em; transition:all 500ms ease-in-out; }
+.purple_fill { fill:var(--purple); transition:all 500ms ease-in-out; }
+.nav_block:hover { background-color:var(--purple); }
+.nav_block:hover * { fill:var(--light-grey); color:var(--light-grey); }
+
+h1 { font-family:"Baloo 2", sans-serif; margin:0; color:var(--purple); font-size:2em; font-weight:bold; }
+h2 { font-family:"Baloo 2", sans-serif; margin:0; background-color:var(--yellow); color:var(--black); font-size:1.5em; font-weight:bold; border-radius:0 1em 1em 0; padding:0.5em; max-width:500px; }
+.custom_button { border-radius:0 1.5em 1.5em 0; padding:1em; border:none; width:fit-content; margin-bottom:1em; }
+.yellow { border:0.25em solid var(--yellow); color:var(--black); transition:all 500ms ease-in-out;}
+.yellow:hover { border:0.25em solid var(--orange); }
+
+input { margin-bottom:1em; }
+.red_fill { color:var(--pink); font-size:85% }
+
+.separator {
+    background-image: url("../images/separator.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 210px;
+    height: 30px;
+}
+
+.block { padding:1em 0; border-radius: 0 1em 1em 0; width:fit-content; margin:1em 0; }
+.purple_block { background-color:var(--purple); color:var(--light-grey); padding:1em; border-radius: 0 1em 1em 0; width:fit-content; margin-bottom:1em; }
+.custom_button_submitt { border-radius:1.5em; padding:1em; border:none; margin-bottom:1em; color:var(--light-grey); background-color:var(--purple); transition:all 500ms ease-in-out; }
+.custom_button_submitt:hover { background-color:var(--dark-purple); }
+.custom_form { display:flex; flex-direction:column; max-width:500px; margin:1em 0; }
+p { margin-block-end: 0; }
+@media screen and (max-width: 600px) {
+    .navbar_wrapper { flex-basis: 5em; }
+    .nav_block span { font-size: 11px; }
+}

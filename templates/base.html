@@ -1,0 +1,22 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} | WikiConecta</title>
+    <link rel="shortcut icon" type="image/png" href="{% static '/images/favicon.ico' %}"/>
+    <link rel="preconnect" href="https://tools-static.wmflabs.org/">
+    <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/w3-css/4.1.0/w3.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href='https://tools-static.wmflabs.org/fontcdn/css?family=Baloo+2:400,500,600,700,800'>
+</head>
+<body>
+    <div style="display:flex; height:100vh">
+        {% block navbar %}{% include 'navbar.html' %}{% endblock %}
+        <main class="w3-container">{% block content %}{% endblock %}</main>
+    </div>
+</body>
+</html>
