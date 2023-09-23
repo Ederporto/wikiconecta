@@ -46,6 +46,9 @@ def profile(request):
     else:
         form = UserForm(instance=user)
 
+    user.is_student = Participant.objects.filter(username=user.username).exists()
+    user.save()
+
     modification = UserModification.objects.filter(user=user)
     date_of_modification = modification.latest("date_of_modification").date_of_modification.strftime("%Y-%m-%dT%H:%M:%S") if modification else None
     context = {"form": form, "username": user.username, "is_student": user.is_student, "date_of_modification": date_of_modification}

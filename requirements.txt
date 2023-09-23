@@ -5,3 +5,4 @@ pandas
 fpdf
 requests
 mysqlclient
+babel

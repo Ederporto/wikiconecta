@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 04:18-0300\n"
+"POT-Creation-Date: 2023-09-23 05:52-0300\n"
 "PO-Revision-Date: 2023-09-22 21:54+0300\n"
 "Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
 "Language: pt-br\n"
@@ -50,21 +50,29 @@ msgstr "attachment; filename=WikiConecta - Matrícula - {name}.pdf"
 
 #: .\certificate\views.py:110
 #, python-brace-format
-msgid "attachment; filename=WikiConecta - Certificate of Completion - {name}.pdf"
-msgstr "attachment; filename=WikiConecta - Certificado de Conclusão - {name}.pdf"
+msgid ""
+"attachment; filename=WikiConecta - Certificate of Completion - {name}.pdf"
+msgstr ""
+"attachment; filename=WikiConecta - Certificado de Conclusão - {name}.pdf"
 
 #: .\certificate\views.py:127 .\certificate\views.py:138
 #, python-brace-format
-msgid "The validity of this document can be checked at https://wikiconecta."
+msgid ""
+"The validity of this document can be checked at https://wikiconecta."
 "toolforge.org/\n"
 "The validation code is: {code}"
-msgstr "A veracidade deste documento pode ser verificada em https://wikiconecta."
+msgstr ""
+"A veracidade deste documento pode ser verificada em https://wikiconecta."
 "toolforge.org/\n"
 "O código de validação é: {code}"
 
 #: .\certificate\views.py:183
 msgid "São Paulo, "
 msgstr "São Paulo, "
+
+#: .\certificate\views.py:183
+msgid "%B %d, %Y"
+msgstr "%d de %B de %Y"
 
 #: .\certificate\views.py:191
 msgid "To whom it may concern"
@@ -115,21 +123,27 @@ msgstr ""
 "educadores precisam para começar a usar os projetos Wikimedia com seus "
 "estudantes, especialmente na extensão universitária. Ao final do curso, os "
 "participantes deverão ser capazes de editar de forma básica quatro projetos "
-"Wikimedia – a Wikipédia, o Wikidata, o Wikimedia Commons e a Wikiversidade – "
+"Wikimedia - a Wikipédia, o Wikidata, o Wikimedia Commons e a Wikiversidade - "
 "e desenvolver seus próprios programas de wiki-educação, visando cumprir as "
 "diretrizes da extensão universitária brasileira."
 
 #: .\certificate\views.py:211
-msgid "The WikiConecta is divided into six modules, each one divided into several units:"
-msgstr "O WikiConecta é dividido em seis módulos, cada qual subdividido em várias unidades. São elas:"
+msgid ""
+"The WikiConecta is divided into six modules, each one divided into several "
+"units:"
+msgstr ""
+"O WikiConecta é dividido em seis módulos, cada qual subdividido em várias "
+"unidades. São elas:"
 
 #: .\certificate\views.py:213
 msgid "Module 1: Introduction"
 msgstr "Módulo 1: Introdução"
 
 #: .\certificate\views.py:216
-msgid "Free Knowledge: potentials and advantages of using the Wikimedia Projects"
-msgstr "Conhecimento livre: potenciais e vantagens de usar os projetos Wikimedia"
+msgid ""
+"Free Knowledge: potentials and advantages of using the Wikimedia Projects"
+msgstr ""
+"Conhecimento livre: potenciais e vantagens de usar os projetos Wikimedia"
 
 #: .\certificate\views.py:218
 msgid "The Wikimedia Projects and Organizations"
@@ -236,8 +250,10 @@ msgid "Wikiversity - the free university"
 msgstr "Wikiversidade - a universidade livre"
 
 #: .\certificate\views.py:276
-msgid "Open Educational Resources (OER) and Massive Open Online Courses (MOOCs)"
-msgstr "Recursos Educacionais Abertos (REA) e Massive Open Online Courses (MOOCs)"
+msgid ""
+"Open Educational Resources (OER) and Massive Open Online Courses (MOOCs)"
+msgstr ""
+"Recursos Educacionais Abertos (REA) e Massive Open Online Courses (MOOCs)"
 
 #: .\certificate\views.py:278
 msgid "Editing the Wikiversity"
@@ -766,10 +782,10 @@ msgstr ""
 
 #: .\templates\user_profile\index.html:30
 msgid ""
-"Basic editing of four Wikimedia projects – Wikipedia, Wikidata, Wikimedia "
+"Basic editing of four Wikimedia projects - Wikipedia, Wikidata, Wikimedia "
 "Commons and Wikiversity;"
 msgstr ""
-"Editar de forma básica quatro projetos Wikimedia – a Wikipédia, o Wikidata, "
+"Editar de forma básica quatro projetos Wikimedia - a Wikipédia, o Wikidata, "
 "o Wikimedia Commons e a Wikiversidade;"
 
 #: .\templates\user_profile\index.html:31
@@ -856,7 +872,8 @@ msgstr "nome de usuário(a)"
 
 #: .\user_profile\models.py:18
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-msgstr "Obrigatório. 150 caracteres ou menos. Somente Letras, dígitos e @/./+/-/_."
+msgstr ""
+"Obrigatório. 150 caracteres ou menos. Somente Letras, dígitos e @/./+/-/_."
 
 #: .\user_profile\models.py:21
 msgid "A user with that username already exists."

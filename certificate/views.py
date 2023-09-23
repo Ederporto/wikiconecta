@@ -12,6 +12,7 @@ from django.forms import formset_factory
 from django.http import HttpResponse
 from django.shortcuts import render, reverse, redirect
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language
 
 from user_profile.models import User, Participant
 from certificate.forms import ActivityLinkForm
@@ -23,46 +24,50 @@ from certificate.models import ActivityLink, Certificate
 #######################################
 @login_required()
 def certificate(request):
-    is_student = Participant.objects.filter(username=request.user.username).exists()
     user = request.user
-    ActivitiesForm = formset_factory(ActivityLinkForm, max_num=5, validate_max=True, can_delete=False)
-    if request.method == "POST":
-        formset = ActivitiesForm(request.POST)
-        if formset.is_valid():
-            for form in formset:
-                form_id = int(form.prefix.replace("form-", "")) + 2 # Activities start in the 2nd module
-                try:
-                    activity_link = ActivityLink.objects.get(module_id=form_id, user=user)
-                    activity_link.link = form.cleaned_data["link"]
-                    activity_link.save()
-                except ActivityLink.DoesNotExist:
-                    ActivityLink.objects.create(module_id=form_id,
-                                                user=user,
-                                                link=form.cleaned_data["link"])
-                user.requested_certificate = True
-                user.date_of_request = datetime.now()
-                user.save()
-    else:
-        if ActivityLink.objects.filter(user=user).exists():
-            formset = ActivitiesForm(initial=[
-                {'link': ActivityLink.objects.get(module_id=1, user=user).link},
-                {'link': ActivityLink.objects.get(module_id=2, user=user).link},
-                {'link': ActivityLink.objects.get(module_id=3, user=user).link},
-                {'link': ActivityLink.objects.get(module_id=4, user=user).link},
-                {'link': ActivityLink.objects.get(module_id=5, user=user).link},
-                {'link': ActivityLink.objects.get(module_id=6, user=user).link},
-            ])
-        else:
-            formset = ActivitiesForm(
-                initial=[{'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}])
 
-    user_requested_certificate = user.requested_certificate
-    date_of_request = user.date_of_request or None
-    context = {"user_requested_certificate": user_requested_certificate,
-               "date_of_request": date_of_request,
-               "user_is_registered": is_student,
-               "formset": formset}
-    return render(request, 'user_profile/certificate.html', context)
+    if user.first_name and user.last_name and user.email:
+        is_student = Participant.objects.filter(username=user.username).exists()
+        ActivitiesForm = formset_factory(ActivityLinkForm, max_num=5, validate_max=True, can_delete=False)
+        if request.method == "POST":
+            formset = ActivitiesForm(request.POST)
+            if formset.is_valid():
+                for form in formset:
+                    form_id = int(form.prefix.replace("form-", "")) + 2 # Activities start in the 2nd module
+                    try:
+                        activity_link = ActivityLink.objects.get(module_id=form_id, user=user)
+                        activity_link.link = form.cleaned_data["link"]
+                        activity_link.save()
+                    except ActivityLink.DoesNotExist:
+                        ActivityLink.objects.create(module_id=form_id,
+                                                    user=user,
+                                                    link=form.cleaned_data["link"])
+                    user.requested_certificate = True
+                    user.date_of_request = datetime.now()
+                    user.save()
+        else:
+            if ActivityLink.objects.filter(user=user).exists():
+                formset = ActivitiesForm(initial=[
+                    {'link': ActivityLink.objects.get(module_id=1, user=user).link},
+                    {'link': ActivityLink.objects.get(module_id=2, user=user).link},
+                    {'link': ActivityLink.objects.get(module_id=3, user=user).link},
+                    {'link': ActivityLink.objects.get(module_id=4, user=user).link},
+                    {'link': ActivityLink.objects.get(module_id=5, user=user).link},
+                    {'link': ActivityLink.objects.get(module_id=6, user=user).link},
+                ])
+            else:
+                formset = ActivitiesForm(
+                    initial=[{'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}])
+
+        user_requested_certificate = user.requested_certificate
+        date_of_request = user.date_of_request or None
+        context = {"user_requested_certificate": user_requested_certificate,
+                   "date_of_request": date_of_request,
+                   "user_is_registered": is_student,
+                   "formset": formset}
+        return render(request, 'user_profile/certificate.html', context)
+    else:
+        return redirect(reverse("profile"))
 
 
 @login_required()
@@ -140,13 +145,14 @@ class CertificationPDF(FPDF):
 
 @login_required()
 def enrollment_letter(request):
-    pass
+    user_id = request.user.id
+    return generate_enrollment_letter(user_id)
 
 
 def generate_enrollment_letter(user_id=None):
     user = User.objects.get(pk=user_id)
 
-    certificate_obj, created = Certificate.objects.get_or_create(user_id=user.id)
+    certificate_obj, created = Certificate.objects.get_or_create(user_id=user.id, certificate_type="enrollment")
     if created:
         user_hash = hashlib.sha1(bytes("Enrollment letter " + certificate_obj.user.username + str(certificate_obj.date_issued), 'utf-8')).hexdigest()
         certificate_obj.certificate_hash = user_hash
@@ -162,10 +168,10 @@ def generate_enrollment_letter(user_id=None):
 
     pdf.set_draw_color(75, 82, 209)
     pdf.set_text_color(255, 255, 255)  # Title in white color
-    pdf.image(os.path.join(settings.STATICFILES_DIRS[0], 'images/wikiconecta-header.png'), x=0, y=0, w=210)
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/wikiconecta-header.png'), x=0, y=0, w=210)
     # Box for the title
     pdf.set_text_color(255, 255, 255)  # Title in white color
-    pdf.add_font(family='Baloo2-Bold', fname=os.path.join(settings.STATICFILES_DIRS[0], 'fonts/Baloo2-Bold.ttf'), uni=True)
+    pdf.add_font(family='Baloo2-Bold', fname=os.path.join(settings.STATIC_ROOT, 'fonts/Baloo2-Bold.ttf'), uni=True)
     pdf.set_font('Baloo2-Bold', '', 25)  # Title in Times New Roman, bold, 15pt
     # Title text
     pdf.set_x(30)
@@ -179,8 +185,8 @@ def generate_enrollment_letter(user_id=None):
 
     pdf.set_font('Times', '', 13)  # Text of the body in Times New Roman, regular, 13 pt
 
-    locale.setlocale(locale.LC_TIME, "pt_BR")  # Setting the language to portuguese for the date
-    pdf.cell(w=150, h=9, border=0, ln=1, align='L', txt=str(_('São Paulo, ')) + datetime.now().strftime("%d de %B de %Y"))
+    locale.setlocale(locale.LC_TIME, get_language())
+    pdf.cell(w=150, h=9, border=0, ln=1, align='L', txt=str(_('São Paulo, ')) + datetime.now().strftime(str(_("%B %d, %Y"))))
 
     pdf.cell(w=0, h=9, ln=1)  # New line
 
@@ -298,11 +304,11 @@ def generate_enrollment_letter(user_id=None):
     #######################################################################################################
     pdf.cell(w=0, h=13, ln=1)  # Give some space for the signatures
     # Amanda Chevtchouk Jurno's signature
-    pdf.image(os.path.join(settings.STATICFILES_DIRS[0], 'images/amanda.png'), x=56, y=227, w=28, h=16)
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/amanda.png'), x=56, y=227, w=28, h=16)
     pdf.set_y(230)
     pdf.multi_cell(w=80, h=9, border=0, align='C', txt=str(_("_________________________________\nAMANDA CHEVTCHOUK JURNO\nCoordinator\nWikiConecta")),)
     pdf.set_xy(110, 230)
-    pdf.image(os.path.join(settings.STATICFILES_DIRS[0], 'images/jap.png'), x=140.5, y=227, w=18, h=16)
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/jap.png'), x=140.5, y=227, w=18, h=16)
     pdf.multi_cell(w=80, h=9, border=0, align='C', txt=str(_("_________________________________\nJOÃO ALEXANDRE PESCHANSKI\nExecutive Director\nWiki Movimento Brasil")),)
 
     # Generate the file
@@ -318,7 +324,7 @@ def generate_certificate(user_id=None):
     Generates a certificate of completion for the course WikiConecta
     """
     user = User.objects.get(pk=user_id)
-    certificate_obj, created = Certificate.objects.get_or_create(user_id=user.id)
+    certificate_obj, created = Certificate.objects.get_or_create(user_id=user.id, certificate_type="certificate")
     if created:
         user_hash = hashlib.sha1(bytes("Enrollment letter " + certificate_obj.user.username + str(certificate_obj.date_issued), 'utf-8')).hexdigest()
         certificate_obj.certificate_hash = user_hash
@@ -334,11 +340,11 @@ def generate_certificate(user_id=None):
     #######################################################################################################
     # Header
     #######################################################################################################
-    pdf.image(os.path.join(settings.STATICFILES_DIRS[0], 'images/wikiconecta-background.png'), x=0, y=0, w=297, h=210)
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/wikiconecta-background.png'), x=0, y=0, w=297, h=210)
     pdf.set_y(20)  # Start the letter text at the 10x42mm point
 
-    pdf.add_font(family='Baloo2-Regular', fname=os.path.join(settings.STATICFILES_DIRS[0], 'fonts/Baloo2-Regular.ttf'), uni=True)
-    pdf.add_font(family='Baloo2-Bold', fname=os.path.join(settings.STATICFILES_DIRS[0], 'fonts/Baloo2-Bold.ttf'), uni=True)
+    pdf.add_font(family='Baloo2-Regular', fname=os.path.join(settings.STATIC_ROOT, 'fonts/Baloo2-Regular.ttf'), uni=True)
+    pdf.add_font(family='Baloo2-Bold', fname=os.path.join(settings.STATIC_ROOT, 'fonts/Baloo2-Bold.ttf'), uni=True)
     pdf.set_font(family='Baloo2-Regular', size=37)  # Text of the body in Times New Roman, regular, 13 pt
 
     locale.setlocale(locale.LC_TIME, "pt_BR")  # Setting the language to portuguese for the date
@@ -396,12 +402,12 @@ def generate_certificate(user_id=None):
     pdf.set_xy(80, 131)
     pdf.multi_cell(w=80, h=5, border=0, align='C',
                    txt=str(_("_________________________________\nAMANDA CHEVTCHOUK JURNO\nCoordinator\nWikiConecta")), )
-    pdf.image(os.path.join(settings.STATICFILES_DIRS[0], 'images/amanda.png'), x=106, y=125, w=28, h=16)
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/amanda.png'), x=106, y=125, w=28, h=16)
     # João Alexandre Peschanski's signature
     pdf.set_xy(155, 131)
     pdf.multi_cell(w=80, h=5, border=0, align='C', txt=str(
         _("_________________________________\nJOÃO ALEXANDRE PESCHANSKI\nExecutive Director\nWiki Movimento Brasil")), )
-    pdf.image(os.path.join(settings.STATICFILES_DIRS[0], 'images/jap.png'), x=186, y=125, w=18, h=16)
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/jap.png'), x=186, y=125, w=18, h=16)
 
     # Text
     pdf.set_xy(50, 166)
