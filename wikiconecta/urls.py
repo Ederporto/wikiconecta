@@ -22,6 +22,7 @@ urlpatterns = [
     path('^admin/', admin.site.urls),
     path('', include('user_profile.urls')),
     path('', include('certificate.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,894 @@
+# WIKICONECTA.
+# Copyright (C) 2023 Éder Porto Ferreira Alves
+# This file is distributed under the same license as the WikiConecta package.
+# Éder Porto <eder.porto@wmnobrasil.org>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: eder.porto@wmnobrasil.org\n"
+"POT-Creation-Date: 2023-09-22 21:52-0300\n"
+"PO-Revision-Date: 2023-09-22 21:54+0300\n"
+"Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
+"Language: pt-br\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: .\certificate\models.py:9
+msgid "Module name"
+msgstr "Nome do módulo"
+
+#: .\certificate\models.py:10
+msgid "Order of the module"
+msgstr "Ordem do módulo"
+
+#: .\certificate\models.py:17
+#: .\templates\certificate\manage_certificates.html:26
+msgid "Activity link"
+msgstr "Link da atividade"
+
+#: .\certificate\models.py:25
+#, python-format
+msgid "Activity %(order)s of %(user)s"
+msgstr "Atividade nº %(order)s de %(user)s"
+
+#: .\certificate\models.py:30
+msgid "Enrollment"
+msgstr "Matrícula"
+
+#: .\certificate\models.py:31 .\templates\navbar.html:63
+msgid "Certificate"
+msgstr "Certificado"
+
+#: .\certificate\views.py:106 .\certificate\views.py:312
+#, python-brace-format
+msgid "attachment; filename=WikiConecta - Enrollment - {name}.pdf"
+msgstr "attachment; filename=WikiConecta - Matrícula - {name}.pdf"
+
+#: .\certificate\views.py:110
+#, python-brace-format
+msgid "attachment; filename=WikiConecta - Certificate of Completion - {name}.pdf"
+msgstr "attachment; filename=WikiConecta - Certificado de Conclusão - {name}.pdf"
+
+#: .\certificate\views.py:127 .\certificate\views.py:138
+#, python-brace-format
+msgid "The validity of this document can be checked at https://wikiconecta.toolforge.org/"
+"\nThe validation code is: {code}"
+msgstr "A veracidade deste documento pode ser verificada em https://wikiconecta.toolforge.org/"
+"\nO código de validação é: {code}"
+
+#: .\certificate\views.py:183
+msgid "São Paulo, "
+msgstr "São Paulo, "
+
+#: .\certificate\views.py:191
+msgid "To whom it may concern"
+msgstr "A quem possa interessar"
+
+#: .\certificate\views.py:207
+msgid ""
+"The WikiConecta course (https://w.wiki/7KwX) was developed by Wiki Movimento "
+"Brasil, a non-profit organization that works towards free knowledge under "
+"CNPJ 29.801.908/0001-86. To complete it, 20 hours of dedication are "
+"required, asynchronously and independently, and the course is available on "
+"an open online education platform, the Wikiversity.\n"
+"\n"
+"The units were developed by Professor Amanda Chevtchouk Jurno, PhD, "
+"Education and Scientific Dissemination Manager at Wiki Movimento Brasil, "
+"with scientific guidance from Professor João Alexandre Peschanski, PhD, "
+"Executive Director of Wiki Movimento Brasil. In order to adapt the content "
+"to the expectations of the Wikimedia Movement and ensure that it covered the "
+"information necessary to introduce educators to this universe, the course "
+"had strategic guidance from senior members of the Movement working in the "
+"area of Education in various regions of the world.\n"
+"\n"
+"The objective of the course is to present in a condensed form the "
+"information that educators need to start using the Wikimedia projects with "
+"their students, especially in university extension. At the end of the "
+"course, participants should be able to basic edit four Wikimedia projects - "
+"Wikipedia, Wikidata, Wikimedia Commons and Wikiversity - and develop their "
+"own wiki-education programs, aiming to comply with Brazilian university "
+"extension guidelines."
+msgstr ""
+"O curso WikiConecta (https://w.wiki/7KwX) foi desenvolvido pelo Wiki Movimento "
+"Brasil, organização sem fins lucrativos que trabalha em prol do conhecimento livre "
+"sob o CNPJ 29.801.908/0001-86. Para realizá-lo são necessárias 20 horas de dedicação, "
+"de forma assíncrona e independente, e o curso está disponível em uma plataforma de "
+"educação aberta online, a Wikiversidade.\n"
+"\n"
+"As unidades foram desenvolvidas pela Professora Doutora Amanda Chevtchouk Jurno, "
+"Gestora de Educação e Difusão Científica do Wiki Movimento Brasil, "
+"com orientação científica do Professor Doutor João Alexandre Peschanski, "
+"Diretor Executivo do Wiki Movimento Brasil. A fim de adequar o conteúdo às "
+"expectativas do Movimento Wikimedia e garantir que este cobrisse as informações "
+"necessárias para a introdução dos educadores neste universo, o curso "
+"teve orientação estratégica de membros sêniores do Movimento atuantes na "
+"área de Educação em várias regiões do mundo.\n"
+"\n"
+"O objetivo do curso é apresentar de forma condensada as informações que "
+"educadores precisam para começar a usar os projetos Wikimedia com seus "
+"estudantes, especialmente na extensão universitária. Ao final do curso, "
+"os participantes deverão ser capazes de editar de forma básica quatro projetos Wikimedia "
+"– a Wikipédia, o Wikidata, o Wikimedia Commons e a Wikiversidade – e desenvolver seus "
+"próprios programas de wiki-educação, visando cumprir as diretrizes da extensão "
+"universitária brasileira."
+
+#: .\certificate\views.py:211
+msgid ""
+"The WikiConecta is divided into six modules, each one divided into several "
+"units:"
+msgstr "O WikiConecta é dividido em seis módulos, cada qual subdividido em várias unidades. São elas:"
+
+#: .\certificate\views.py:213
+msgid "Module 1: Introduction"
+msgstr "Módulo 1: Introdução"
+
+#: .\certificate\views.py:216
+msgid "Free Knowledge: potentials and advantages of using the Wikimedia Projects"
+msgstr "Conhecimento livre: potenciais e vantagens de usar os projetos Wikimedia"
+
+#: .\certificate\views.py:218
+msgid "The Wikimedia Projects and Organizations"
+msgstr "Projetos e Organizações Wikimedia"
+
+#: .\certificate\views.py:220
+msgid "Collective ntelligence and open data"
+msgstr "Inteligência coletiva e dados abertos"
+
+#: .\certificate\views.py:222
+msgid "Wikimedia programs, initiatives and events"
+msgstr "Programas, iniciativas e eventos Wikimedia"
+
+#: .\certificate\views.py:224
+msgid "Module 2: Wikipedia"
+msgstr "Módulo 2: A Wikipédia"
+
+#: .\certificate\views.py:227
+msgid "Wikipedia as an educational resource"
+msgstr "A Wikipédia como recurso educacional"
+
+#: .\certificate\views.py:229
+msgid "Diffusion and scientific dissemination on Wikipedia"
+msgstr "Difusão e divulgação científica na Wikipédia"
+
+#: .\certificate\views.py:231
+msgid "Content and equity gaps"
+msgstr "Lacunas de conteúdo e equidade"
+
+#: .\certificate\views.py:233
+msgid "Principles and foundations of Wikipedia"
+msgstr "Princípios e fundamentos da Wikipédia"
+
+#: .\certificate\views.py:235
+msgid "Entries and arrangement of information"
+msgstr "Os verbetes e a disposição das informações"
+
+#: .\certificate\views.py:237
+msgid "Editing Wikipedia"
+msgstr "Editando a Wikipédia"
+
+#: .\certificate\views.py:239
+msgid "Using Wikipedia with students"
+msgstr "Utilizando a Wikipédia com estudantes"
+
+#: .\certificate\views.py:241
+msgid "Module 3: Wikidata"
+msgstr "Módulo 3: O Wikidata"
+
+#: .\certificate\views.py:244
+msgid "The Wikimedia structured database"
+msgstr "O banco de dados estruturados da Wikimedia"
+
+#: .\certificate\views.py:246
+msgid "Getting data: Wikidata Query Service and Scholia"
+msgstr "Obtendo dados: Wikidata Query Service e Scholia"
+
+#: .\certificate\views.py:248
+msgid "Entering data: how to use Zotero"
+msgstr "Inserindo dados: como usar o Zotero"
+
+#: .\certificate\views.py:250
+msgid "Bias and subjectivity in data"
+msgstr "Viés e subjetividade nos dados"
+
+#: .\certificate\views.py:252
+msgid "Editing Wikidata"
+msgstr "Editando o Wikidata"
+
+#: .\certificate\views.py:254
+msgid "Using Wikidata with students"
+msgstr "Utilizando o Wikidata com estudantes"
+
+#: .\certificate\views.py:256
+msgid "Module 4: Wikimedia Commons"
+msgstr "Módulo 4: O Wikimedia Commons"
+
+#: .\certificate\views.py:259
+msgid "Wikimedia audiovisual repository"
+msgstr "Repositório audiovisual da Wikimedia"
+
+#: .\certificate\views.py:261
+msgid "Creative commons and free licenses"
+msgstr "Creative commons e licenças livres"
+
+#: .\certificate\views.py:263
+msgid "How to use Wikimedia Commons"
+msgstr "Como usar o Wikimedia Commons"
+
+#: .\certificate\views.py:265
+msgid "File upload"
+msgstr "Carregamento de arquivos"
+
+#: .\certificate\views.py:267
+msgid "Using Wikimedia Commons with students"
+msgstr "Utilizando o Wikimedia Commons com estudantes"
+
+#: .\certificate\views.py:271
+msgid "Module 5: Wikiversity"
+msgstr "Módulo 5: A Wikiversidade"
+
+#: .\certificate\views.py:274
+msgid "Wikiversity - the free university"
+msgstr "Wikiversidade - a universidade livre"
+
+#: .\certificate\views.py:276
+msgid "Open Educational Resources (OER) and Massive Open Online Courses (MOOCs)"
+msgstr "Recursos Educacionais Abertos (REA) e Massive Open Online Courses (MOOCs)"
+
+#: .\certificate\views.py:278
+msgid "Editing the Wikiversity"
+msgstr "Editando a Wikiversidade"
+
+#: .\certificate\views.py:280
+msgid "Using Wikiversity with students"
+msgstr "Utilizando a Wikiversidade com estudantes"
+
+#: .\certificate\views.py:282
+msgid "Module 6: Education programs"
+msgstr "Módulo 6: Programas de educação"
+
+#: .\certificate\views.py:285
+msgid "Creating an education program with Wiki"
+msgstr "Criando um programa de educação com a Wiki"
+
+#: .\certificate\views.py:287
+msgid "Program monitoring: Dashboard"
+msgstr "Acompanhamento de programas: Dashboard"
+
+#: .\certificate\views.py:289
+msgid "Potential financiers"
+msgstr "Potenciais financiadores"
+
+#: .\certificate\views.py:291
+msgid "Wikimedia and Education in Brazil"
+msgstr "Wikimedia e Educação no Brasil"
+
+#: .\certificate\views.py:293
+#, python-brace-format
+msgid ""
+"The course is free and the control of activities is carried out by resources "
+"on Wikimedia. This letter certifies that {name} is able to participate in "
+"the WikiConecta course. If requested, we can issue a declaration of course "
+"completion, once the participant has completed the proposed readings and "
+"activities.\n"
+"\n"
+"Please do not hesitate to contact us to receive further information "
+"regarding the course.\n"
+"\n"
+"Yours sincerely,"
+msgstr "O curso é livre e o controle das atividades é realizado por recursos "
+"na Wikimedia. Esta carta certifica que {name} está apto(a) a participar do "
+"curso WikiConecta. Caso requisitado, podemos emitir uma declaração de conclusão "
+"do curso, uma vez que o(a) participante tenha finalizado as leituras e "
+"atividades propostas.\n"
+"\n"
+"Por favor, não hesitem em entrar em contato conosco para receber outras informações "
+"a respeito do curso.\n"
+"\n"
+"Atenciosamente,"
+
+#: .\certificate\views.py:303 .\certificate\views.py:398
+msgid ""
+"_________________________________\n"
+"AMANDA CHEVTCHOUK JURNO\n"
+"Coordinator\n"
+"WikiConecta"
+msgstr ""
+"_________________________________\n"
+"AMANDA CHEVTCHOUK JURNO\n"
+"Coordenadora\n"
+"WikiConecta"
+
+#: .\certificate\views.py:306 .\certificate\views.py:403
+msgid ""
+"_________________________________\n"
+"JOÃO ALEXANDRE PESCHANSKI\n"
+"Executive Director\n"
+"Wiki Movimento Brasil"
+msgstr ""
+"_________________________________\n"
+"JOÃO ALEXANDRE PESCHANSKI\n"
+"Diretor Executivo\n"
+"Wiki Movimento Brasil"
+
+#: .\certificate\views.py:345
+msgid "CERTIFICATE"
+msgstr "CERTIFICADO"
+
+#: .\certificate\views.py:349
+msgid "We grant this certificate to"
+msgstr "Nós concedemos este certificado a"
+
+#: .\certificate\views.py:383
+msgid "for completing the readings and tasks of the online course"
+msgstr "por ter completado as leituras e atividades do curso online"
+
+#: .\certificate\views.py:390
+msgid "Initiative:"
+msgstr "Iniciativa"
+
+#: .\certificate\views.py:408
+msgid ""
+"The WikiConecta course does not have record control, readings and tasks are "
+"freely accessible.\n"
+"This certificate is therefore not recognized as an official diploma. The "
+"course totals twenty hours."
+msgstr ""
+"O curso WikiConecta não tem um controle de registros, as leituras e atividades são"
+"de acesso livre.\n"
+"Este certificado, portanto, não é reconhecido como um diploma oficial. O"
+"curso totaliza para sua realização vinte horas."
+
+#: .\certificate\views.py:429
+#, python-brace-format
+msgid ""
+"Dear {name},\n"
+"\n"
+"We hope this message finds you well. We want to inform you about the status "
+"of your participation in the <b>WikiConecta</b> online course."
+msgstr ""
+"Caro(a) {name},\n"
+"\n"
+"Esperamos que esta mensagem lhe encontre bem. Queremos te informar sobre o status "
+"da sua participação no curso online <b>WikiConecta</b>."
+
+#: .\certificate\views.py:430
+msgid ""
+"After a thorough review of your assessments of the course, we noticed that "
+"you've encountered some challenges with specific assignments or assessments. "
+"While your overall engagement and commitment to the course have been "
+"commendable, we want to ensure that you have a full grasp of the subjects of "
+"the course.\n"
+"We appreciate your dedication to the course and your willingness to engage "
+"with the material. We want to emphasize that our goal is to support your "
+"learning journey. To that end, we invite you to work on the assignments and "
+"resubmit them for reevaluation.\n"
+"\n"
+"The list of modules in which we identified problems in the assignments is "
+"available below. If you have any questions or concerns about them or about "
+"our evaluation, please feel free to contact the organizers of the course.\n"
+"\n"
+"<b>List of modules</b>"
+msgstr ""
+"Após uma análise minuciosa de suas atividades no curso, percebemos que "
+"você encontrou alguns desafios com tarefas ou atividades específicas. "
+"Embora seu envolvimento e comprometimento geral com o curso tenham sido "
+"louváveis, queremos garantir que você tenha uma compreensão completa dos "
+"assuntos do curso.\n"
+"Agradecemos sua dedicação ao curso e sua disposição em se envolver "
+"com o material. Queremos enfatizar que nosso objetivo é apoiar a sua "
+"jornada de aprendizagem. Para isso, convidamos você a trabalhar nas atividades e "
+"reenvie-as para reavaliação.\n"
+"\n"
+"A lista de módulos em que identificamos problemas nas atividades está "
+"disponível abaixo. Se você tiver alguma dúvida ou preocupação sobre eles ou sobre "
+"nossa avaliação, não hesite em contactar os organizadores do curso.\n"
+"\n"
+"<b>Lista de módulos</b>"
+
+#: .\certificate\views.py:431
+msgid ""
+"We're from the <b><i>Wiki Movement Brazil User Group</i></b> are excited to "
+"inform you that your <b>Certificate of Completion</b> for the WikiConecta "
+"online course is now ready for download and verification.\n"
+"\n"
+"You successfully completed all the required assignments, demonstrating your "
+"dedication and commitment to learning. You certificate serves as a testament "
+"to your accomplishment in WikiConecta and your commitment to contribute in "
+"building the Free Knowledge ecossystem\n"
+"\n"
+"Attatched you will find your certificate."
+msgstr ""
+"Nós do <b><i>Grupo de Usuários Wiki Movimento Brasil</i></b> estamos felizes em "
+"lhe informar que seu <b>Certificado de Conclusão</b> do curso online WikiConecta "
+"agora está pronto para download e verificação.\n"
+"\n"
+"Você concluiu com êxito todas as tarefas exigidas, demonstrando sua "
+"dedicação e comprometimento com o aprendizado. Seu certificado serve como um testamento"
+"à sua conquista no WikiConecta e ao seu compromisso em contribuir "
+"construindo o ecossistema do Conhecimento Livre\n"
+"\n"
+"Em anexo você encontrará seu certificado."
+
+#: .\certificate\views.py:432
+msgid ""
+"<font style='color:#4A51D2; font-weight:bold; font-style:"
+"italic;'>WikiConecta: Wikipedia in all its extension</font>\n"
+"<a target='_blank' href='https://pt.wikiversity.org/wiki/WikiConecta'>pt."
+"wikiversity.org/wiki/WikiConecta</a>"
+msgstr ""
+"<font style='color:#4A51D2; font-weight:bold; font-style:"
+"italic;'>WikiConecta: A Wikipédia em toda a sua extensão</font>\n"
+"<a target='_blank' href='https://pt.wikiversity.org/wiki/WikiConecta'>pt."
+"wikiversity.org/wiki/WikiConecta</a>"
+
+#: .\certificate\views.py:433
+msgid "<li><i>Module 1 - Introduction</i></li>"
+msgstr "<li><i>Módulo 1 - Introdução</i></li>"
+
+#: .\certificate\views.py:434
+msgid "<li><i>Module 2 - Wikipedia</i></li>"
+msgstr "<li><i>Módulo 2 - A Wikipédia</i></li>"
+
+#: .\certificate\views.py:435
+msgid "<li><i>Module 3 - Wikidata</i></li>"
+msgstr "<li><i>Módulo 3 - O Wikidata</i></li>"
+
+#: .\certificate\views.py:436
+msgid "<li><i>Module 4 - Wikimedia Commons</i></li>"
+msgstr "<li><i>Módulo 4 - O Wikimedia Commons</i></li>"
+
+#: .\certificate\views.py:437
+msgid "<li><i>Module 5 - Wikiversity</i></li>"
+msgstr "<li><i>Módulo 5 - A Wikiversidade</i></li>"
+
+#: .\certificate\views.py:438
+msgid "<li><i>Module 6 - Education programs</i></li>"
+msgstr "<li><i>Módulo 6 - Programas de educação</i></li>"
+
+#: .\certificate\views.py:467
+msgid "WikiConecta - Certificate of Completion request"
+msgstr "WikiConecta - Requisição de Certificado de Conclusão"
+
+#: .\certificate\views.py:475
+#, python-brace-format
+msgid "WikiConecta - Certificate of Completion - {name}.pdf"
+msgstr "WikiConecta - Certificado de Conclusão - {name}.pdf"
+
+#: .\templates\certificate\manage_certificates.html:7
+#: .\templates\user_profile\certificate.html:7
+msgid "WikiConecta's certificates"
+msgstr "Certificados do WikiConecta's"
+
+#: .\templates\certificate\manage_certificates.html:12
+msgid "Username"
+msgstr "Nome de usuário(a)"
+
+#: .\templates\certificate\manage_certificates.html:13
+msgid "Name"
+msgstr "Nome"
+
+#: .\templates\certificate\manage_certificates.html:14
+msgid "Activities"
+msgstr "Atividades"
+
+#: .\templates\certificate\manage_certificates.html:15
+msgid "Mark the activities with problems"
+msgstr "Marque as atividades com problemas"
+
+#: .\templates\certificate\manage_certificates.html:16
+msgid "Send message"
+msgstr "Enviar mensagem"
+
+#: .\templates\certificate\manage_certificates.html:26
+msgid "Activity"
+msgstr "Atividade"
+
+#: .\templates\certificate\manage_certificates.html:33
+msgid "Activity 1"
+msgstr "Atividade nº 1"
+
+#: .\templates\certificate\manage_certificates.html:34
+msgid "Activity 2"
+msgstr "Atividade nº 2"
+
+#: .\templates\certificate\manage_certificates.html:35
+msgid "Activity 3"
+msgstr "Atividade nº 3"
+
+#: .\templates\certificate\manage_certificates.html:36
+msgid "Activity 4"
+msgstr "Atividade nº 4"
+
+#: .\templates\certificate\manage_certificates.html:37
+msgid "Activity 5"
+msgstr "Atividade nº 5"
+
+#: .\templates\certificate\manage_certificates.html:38
+msgid "Activity 6"
+msgstr "Atividade nº 6"
+
+#: .\templates\certificate\manage_certificates.html:41
+msgid "Send Message"
+msgstr "Enviar mensagem"
+
+#: .\templates\certificate\validator.html:5
+msgid "Validation"
+msgstr "Validação"
+
+#: .\templates\certificate\validator.html:8
+msgid "Document validation"
+msgstr "Validação de documentos"
+
+#: .\templates\certificate\validator.html:10
+msgid ""
+"On this page we offer the possibility of checking the authenticity of the "
+"documents issued relating to the WikiConecta course."
+msgstr ""
+"Nesta página oferecemos a possibilidade de verificar a autenticidade dos "
+"documentos emitidos relativos ao curso WikiConecta."
+
+#: .\templates\certificate\validator.html:11
+msgid "Type or paste the 40-character VALIDATION CODE below:"
+msgstr "Digite ou cole o CÓDIGO DE VALIDAÇÃO de 40 caracteres abaixo:"
+
+#: .\templates\certificate\validator.html:17 .\templates\navbar.html:47
+msgid "Validate"
+msgstr "Validação"
+
+#: .\templates\navbar.html:6 .\templates\navbar.html:25
+msgid "Homepage"
+msgstr "Página inicial"
+
+#: .\templates\navbar.html:33
+msgid "About"
+msgstr "Sobre"
+
+#: .\templates\navbar.html:41
+msgid "Join"
+msgstr "Inscrever-se"
+
+#: .\templates\navbar.html:54
+msgid "Manage certificates"
+msgstr "Gerenciar certificados"
+
+#: .\templates\navbar.html:75
+msgid "You have registration issues"
+msgstr "Você tem problemas na sua matrícula"
+
+#: .\templates\navbar.html:82
+msgid "Logout"
+msgstr "Sair"
+
+#: .\templates\navbar.html:90
+msgid "Login"
+msgstr "Entrar"
+
+#: .\templates\user_profile\about.html:7 .\templates\user_profile\login.html:7
+msgid "About WikiConecta"
+msgstr "Sobre o WikiConecta"
+
+#: .\templates\user_profile\about.html:9 .\templates\user_profile\login.html:9
+msgid ""
+"The Wikiconecta is an initiative from <a target=\"_blank\" href=\"https://"
+"meta.wikimedia.org/wiki/Wiki_Movement_Brazil_User_Group/pt-br\" aria-label="
+"\"Wiki Movimento Brasil's page\">Wiki Movement Brazil</a>."
+msgstr ""
+"O WikiConecta é uma realização do <a target=\"_blank\" href=\"https://"
+"meta.wikimedia.org/wiki/Wiki_Movement_Brazil_User_Group/pt-br\" aria-label="
+"\"página do Wiki Movimento Brasil\">Wiki Movimento Brasil</a>."
+
+#: .\templates\user_profile\about.html:10
+#: .\templates\user_profile\index.html:20
+#: .\templates\user_profile\login.html:10
+msgid ""
+"It was developed over several months of research and work, and counted with "
+"the participation of <a target=\"_blank\" href=\"https://pt.wikiversity.org/"
+"wiki/WikiConecta/Expediente\" aria-label=\"Wikimedians involved\">several "
+"Wikimedians</a>, committed to free knowledge."
+msgstr ""
+"Desenvolvido ao longo de vários meses de pesquisa e trabalho, o curso contou "
+"com a participação de <a target=\"_blank\" href=\"https://pt.wikiversity.org/"
+"wiki/WikiConecta/Expediente\" aria-label=\"Wikimedians involved\">diversos "
+"Wikimedistas</a>, comprometidos com o conhecimento livre."
+
+#: .\templates\user_profile\about.html:11
+#: .\templates\user_profile\index.html:21
+msgid ""
+"The course is divided into modules, which one of them subdivided into units. "
+"You can check the <a target=\"_blank\" href=\"https://pt.wikiversity.org/"
+"wiki/WikiConecta/Módulos\" aria-label=\"Pages with the modules of the course"
+"\">course's summary and content</a>. You can also <a target=\"_blank\" href="
+"\"https://outreachdashboard.wmflabs.org/courses/Wiki_Movimento_Brasil/"
+"WikiConecta\" aria-label=\"Enrollment page\">enroll in to participate in the "
+"course</a> and later get certificated."
+msgstr ""
+"O curso está dividido em módulos e cada um deles reúne uma série de unidades. "
+"Você pode checar o <a target=\"_blank\" href=\"https://pt.wikiversity.org/"
+"wiki/WikiConecta/Módulos\" aria-label=\"página com os módulos do curso\">sumário "
+"e conteúdo do curso</a>. Você também pode se <a target=\"_blank\" href="
+"\"https://outreachdashboard.wmflabs.org/courses/Wiki_Movimento_Brasil/"
+"WikiConecta\" aria-label=\"Enrollment page\">inscrever para participar do "
+"curso</a> e mais tarde ser certificado(a)."
+
+#: .\templates\user_profile\about.html:12
+#: .\templates\user_profile\index.html:22
+msgid ""
+"If you have any questions about this course, write to <a target=\"_blank\" "
+"href=\"mailto:educacao@wmnobrasil.org\" aria-label=\"Email of the project"
+"\">educacao@wmnobrasil.org</a>."
+msgstr ""
+"Se você tiver alguma dúvida sobre este curso, escreva para <a target=\"_blank\" "
+"href=\"mailto:educacao@wmnobrasil.org\" aria-label=\"E-mail do projeto"
+"\">educacao@wmnobrasil.org</a>."
+
+#: .\templates\user_profile\certificate.html:9
+msgid "Enrollment letter"
+msgstr "Carta de matrícula"
+
+#: .\templates\user_profile\certificate.html:11
+msgid "If you are enrolled in WikiConecta, you can download a letter declaring this statement."
+msgstr "Se você está cadastrado(a) no WikiConecta, você pode baixar uma carta declarando isso."
+
+
+#: .\templates\user_profile\certificate.html:16
+msgid "Download enrollment letter"
+msgstr "Baixar carta de matrícula"
+
+#: .\templates\user_profile\certificate.html:20
+#: .\templates\user_profile\certificate.html:59
+msgid "You have to enroll in the course first"
+msgstr "Você deve se inscrever no curso primeiro"
+
+#: .\templates\user_profile\certificate.html:26
+msgid "Certificate of completion"
+msgstr "Certificado de conclusão"
+
+#: .\templates\user_profile\certificate.html:28
+msgid ""
+"If you are enrolled and finished the readings and activities proposed, you "
+"can paste the links to the activities and request a certificate of "
+"completion of WikiConecta."
+msgstr ""
+"Se você está matriculado(a) e finalizou as leituras e atividades propostas, você"
+"pode colar os links das atividades e solicitar certificado de "
+"conclusão do WikiConecta."
+
+#: .\templates\user_profile\certificate.html:32
+#, python-format
+msgid "You solicited the certificate of completion at %(formatted_date)s."
+msgstr "Você solicitou o certificado de conclusão em %(formatted_date)s."
+
+#: .\templates\user_profile\certificate.html:33
+msgid "Update links submitted"
+msgstr "Atualizar links enviados"
+
+#: .\templates\user_profile\certificate.html:33
+msgid "Update links of your submission"
+msgstr "Atualize os links do seu envio"
+
+#: .\templates\user_profile\certificate.html:43
+msgid "Module 'Wikipedia' activity link:"
+msgstr "Link da atividade do módulo 'A Wikipedia':"
+
+#: .\templates\user_profile\certificate.html:44
+msgid "URL of the activity of the second module"
+msgstr "URL da atividade do segundo módulo"
+
+#: .\templates\user_profile\certificate.html:45
+msgid "Module 'Wikidata' activity link:"
+msgstr "Link da atividade do módulo 'O Wikidata':"
+
+#: .\templates\user_profile\certificate.html:46
+msgid "URL of the activity of the third module"
+msgstr "URL da atividade do terceiro módulo"
+
+#: .\templates\user_profile\certificate.html:47
+msgid "Module 'Wikimedia Commons' activity link:"
+msgstr "Link da atividade do módulo 'O Wikimedia Commons':"
+
+#: .\templates\user_profile\certificate.html:48
+msgid "URL of the activity of the fourth module"
+msgstr "URL da atividade do quarto módulo"
+
+#: .\templates\user_profile\certificate.html:49
+msgid "Module 'Wikiversity' activity link:"
+msgstr "Link da atividade do módulo 'A Wikiversidade':"
+
+#: .\templates\user_profile\certificate.html:50
+msgid "URL of the activity of the fifth module"
+msgstr "URL da atividade do quinto módulo"
+
+#: .\templates\user_profile\certificate.html:51
+msgid "Module 'Education programs' activity link:"
+msgstr "Link da atividade do módulo 'Programas de educação':"
+
+#: .\templates\user_profile\certificate.html:52
+msgid "URL of the activity of the sixth module"
+msgstr "URL da atividade do sexto módulo"
+
+#: .\templates\user_profile\certificate.html:53
+msgid "Solicit certificate of completion"
+msgstr "Solicitar certificado de conclusão"
+
+#: .\templates\user_profile\index.html:11
+#, python-format
+msgid "Welcome, %(username)s!"
+msgstr "Bem-vindo(a), %(nome de usuário)s!"
+
+#: .\templates\user_profile\index.html:13
+msgid "Welcome!"
+msgstr "Bem-vindo(a)!"
+
+#: .\templates\user_profile\index.html:16
+msgid "About the course"
+msgstr "Sobre o curso"
+
+#: .\templates\user_profile\index.html:18
+msgid ""
+"The Wikiconecta is an initiative from\n<a target=\"_blank\" href=\"https://meta.wikimedia.org/"
+"wiki/Wiki_Movement_Brazil_User_Group/pt-br\" aria-label=\"Wiki Movimento "
+"Brasil's page\">Wiki Movement Brazil</a>."
+msgstr "O Wikiconecta é uma iniciativa do \n<a target=\"_blank\" href=\"https://meta.wikimedia.org/"
+"wiki/Wiki_Movement_Brazil_User_Group/pt-br\" aria-label=\"página do Wiki Movimento Brasil\">Wiki Movimento Brasil</a>."
+
+#: .\templates\user_profile\index.html:24
+msgid "What you will learn"
+msgstr "O que você vai aprender"
+
+#: .\templates\user_profile\index.html:26
+msgid ""
+"The objective of WikiConecta is to present in a condensed form the "
+"information that educators need to start using the Wikimedia projects with "
+"their students, especially in university extension."
+msgstr ""
+"O objetivo do WikiConecta é apresentar de forma condensada as "
+"informações que os educadores precisam para começar a usar os projetos da Wikimedia com "
+"seus alunos, principalmente na extensão universitária."
+
+#: .\templates\user_profile\index.html:27
+msgid "At the end of the course, participants should be able to:"
+msgstr "No final do curso, os participantes deverão ser capazes de:"
+
+#: .\templates\user_profile\index.html:29
+msgid "Have ideas for activities to develop with your students, especially in university extension;"
+msgstr "Ter ideias de atividades para desenvolver com seus estudantes, principalmente na extensão;"
+
+#: .\templates\user_profile\index.html:30
+msgid "Basic editing of four Wikimedia projects – Wikipedia, Wikidata, Wikimedia Commons and Wikiversity;"
+msgstr "Editar de forma básica quatro projetos Wikimedia – a Wikipédia, o Wikidata, o Wikimedia Commons e a Wikiversidade;"
+
+#: .\templates\user_profile\index.html:31
+msgid "Develop your own wiki-education programs;"
+msgstr "Desenvolver seus próprios programas de wiki-educação;"
+
+#: .\templates\user_profile\index.html:32
+msgid "Find more advanced information about Wikimedia projects of your interest;"
+msgstr "Encontrar informações mais avançadas sobre Projetos Wikimedia de interesse;"
+
+#: .\templates\user_profile\index.html:33
+msgid "Know how to ask for funding to develop your wiki-education programs."
+msgstr "Saber como pedir financiamento para desenvolver seus programas de wiki-educação."
+
+#: .\templates\user_profile\index.html:35
+msgid ""
+"<b>Attention!</b> This course does not intended to replace existing "
+"materials, nor to delve into specific and advanced details of the Wikimedia "
+"projects. Our goal is to facilitate the entry of educators interested in the "
+"Wikimedia universe, including by gathering and systematizing existing content."
+msgstr ""
+"<b>Atenção!</b> Este curso não pretende substituir os materiais existentes, "
+"nem adentrar detalhes específicos e avançados dos projetos Wikimedia. "
+"Nossa meta é facilitar a entrada de educadores e educadoras interessados no "
+"universo Wikimedia, inclusive reunindo e sistematizando conteúdos já existentes."
+
+#: .\templates\user_profile\index.html:41
+msgid "Your browser does not support the video tag"
+msgstr "Seu navegador não suporta a tag de vídeo"
+
+#: .\templates\user_profile\login.html:11
+msgid ""
+"The course is divided into modules, which one of them subdivided into units. "
+"You can check the <a target=\"_blank\" href=\"https://pt.wikiversity.org/"
+"wiki/WikiConecta/Módulos\" aria-label=\"Pages with the modules of the course"
+"\">course's summary and content</a>. You can also <a target=\"_blank\" href="
+"\"\" aria-label=\"Enrollment page\">enroll in to participate in the course</"
+"a> and later get certificated."
+msgstr ""
+"O curso está dividido em módulos e cada um deles reúne uma série de unidades. "
+"Você pode checar o <a target=\"_blank\" href=\"https://pt.wikiversity.org/"
+"wiki/WikiConecta/Módulos\" aria-label=\"página com os módulos do curso\">sumário "
+"e conteúdo do curso</a>. Você também pode se <a target=\"_blank\" href="
+"\"https://outreachdashboard.wmflabs.org/courses/Wiki_Movimento_Brasil/"
+"WikiConecta\" aria-label=\"Enrollment page\">inscrever para participar do "
+"curso</a> e mais tarde ser certificado(a)."
+
+#: .\templates\user_profile\login.html:12
+msgid ""
+"If you have any questions about this course, write to <a target=\"_blank\" "
+"href=\"mailto:educacao@wmnobrasil.org\" aria-label=\"Email of the project "
+"responsible\">educacao@wmnobrasil.org</a>."
+msgstr ""
+"Se você tiver alguma dúvida sobre este curso, escreva para <a target=\"_blank\" "
+"href=\"mailto:educacao@wmnobrasil.org\" aria-label=\"E-mail do projeto"
+"\">educacao@wmnobrasil.org</a>."
+
+#: .\templates\user_profile\profile.html:7
+msgid "Your profile"
+msgstr "Seu perfil"
+
+#: .\templates\user_profile\profile.html:11
+msgid "First name:"
+msgstr "Nome"
+
+#: .\templates\user_profile\profile.html:13
+msgid "Last name:"
+msgstr "Sobrenome"
+
+#: .\templates\user_profile\profile.html:15
+msgid "Email:"
+msgstr "E-mail:"
+
+#: .\templates\user_profile\profile.html:17
+msgid "Username:"
+msgstr "Nome de usuário(a):"
+
+#: .\templates\user_profile\profile.html:21
+msgid "Is enrolled in?"
+msgstr "Está matriculado(a)?"
+
+#: .\templates\user_profile\profile.html:22
+msgid ""
+"<span class=\"red_fill\">You are not <a target=\"_blank\" href=\"https://pt."
+"wikiversity.org/wiki/WikiConecta/Inscrição\">registered in WikiConecta</a>.</"
+"span>"
+msgstr ""
+"<span class=\"red_fill\">Você ainda não está <a target=\"_blank\" href=\"https://pt."
+"wikiversity.org/wiki/WikiConecta/Inscrição\">matriculado(a) no WikiConecta</a>.</"
+"span>"
+
+#: .\templates\user_profile\profile.html:24
+msgid "Last time of modification in this profile:"
+msgstr "Última vez que houve uma modificação nesse perfil:"
+
+#: .\templates\user_profile\profile.html:26
+msgid "Update"
+msgstr "Atualizar"
+
+#: .\user_profile\models.py:14 .\user_profile\models.py:61
+msgid "username"
+msgstr "nome de usuário(a)"
+
+#: .\user_profile\models.py:18
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Obrigatório. 150 caracteres ou menos. Somente Letras, dígitos e @/./+/-/_."
+
+#: .\user_profile\models.py:21
+msgid "A user with that username already exists."
+msgstr "Um usuário com esse nome já existe."
+
+#: .\user_profile\models.py:30
+msgid "old_first_name"
+msgstr "nome_antigo"
+
+#: .\user_profile\models.py:31
+msgid "old_last_name"
+msgstr "sobrenome_antigo"
+
+#: .\user_profile\models.py:32
+msgid "old_email"
+msgstr "email_velho"
+
+#: .\user_profile\models.py:33
+msgid "new_first_name"
+msgstr "novo_nome"
+
+#: .\user_profile\models.py:34
+msgid "new_last_name"
+msgstr "novo_sobrenome"
+
+#: .\user_profile\models.py:35
+msgid "new_email"
+msgstr "novo_email"

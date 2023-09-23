@@ -15,11 +15,6 @@ def index(request):
     return render(request, 'user_profile/index.html', context)
 
 
-def about(request):
-    context = {}
-    return render(request, 'user_profile/about.html', context)
-
-
 @login_required()
 def profile(request):
     user = User.objects.get(username=request.user.username)

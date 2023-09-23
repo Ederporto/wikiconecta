@@ -11,13 +11,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-import mimetypes
 import configparser
 from django.utils.translation import gettext_lazy as _
-mimetypes.add_type("text/css", ".css", True)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 from .settings_local import *
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,11 +90,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
-SOCIAL_AUTH_MEDIAWIKI_KEY = 'adc728d4dc9782bf64931ebfd3b79bb7'
-SOCIAL_AUTH_MEDIAWIKI_SECRET = 'cfa501357c3c3f641a4c7999f7c6564c1b045a4b'
-SOCIAL_AUTH_MEDIAWIKI_URL = 'https://pt.wikiversity.org/w/index.php'
-SOCIAL_AUTH_MEDIAWIKI_CALLBACK = 'http://127.0.0.1:8000/oauth/complete/mediawiki/'
-
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'homepage'
 
@@ -153,7 +147,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
@@ -161,6 +155,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('en', _('English')),
+    ('pt-br', _('Brazilian Portuguese')),
+]
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

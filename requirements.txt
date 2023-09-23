@@ -4,3 +4,4 @@ whitenoise
 pandas
 fpdf
 requests
+mysqlclient
