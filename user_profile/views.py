@@ -62,7 +62,7 @@ def update_list_of_participants(request):
 
 def get_list_of_participants():
     url = "https://outreachdashboard.wmflabs.org/course_students_csv"
-    params = {"course": "Grupo_de_Usu%C3%A1rios_Wiki_Movimento_Brasil/WikiConecta"}
+    params = {"course": "Grupo_de_Usuários_Wiki_Movimento_Brasil/WikiConecta"}
 
     response = requests.get(url, params=params)
     content = StringIO(response.content.decode())
