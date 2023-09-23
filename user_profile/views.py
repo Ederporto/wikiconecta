@@ -11,8 +11,7 @@ from .models import User, UserModification, Participant
 
 
 def index(request):
-    context = {}
-    return render(request, 'user_profile/index.html', context)
+    return render(request, 'user_profile/index.html')
 
 
 @login_required()

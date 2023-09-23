@@ -2,9 +2,11 @@
 {% load static %}
 {% load i18n %}
 
+{% block title %}{% trans "Homepage" %}{% endblock %}
+
 {% block content %}
     <div class="w3-container">
-        <h1 style="color:#4a51d2; font-size:2em; font-weight: bold;">WikiConecta</h1>
+        <h1>{% trans "WikiConecta" %}</h1>
         <div class="w3-container">
             {% if user.is_authenticated %}
                 <p>{% blocktrans with username=user.username %}Welcome, {{ username }}!{% endblocktrans %}</p>
