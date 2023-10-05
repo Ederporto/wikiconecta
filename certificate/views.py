@@ -48,11 +48,11 @@ def certificate(request):
         else:
             if ActivityLink.objects.filter(user=user).exists():
                 formset = ActivitiesForm(initial=[
-                    {'link': ActivityLink.objects.get(module_id=1, user=user).link},
                     {'link': ActivityLink.objects.get(module_id=2, user=user).link},
                     {'link': ActivityLink.objects.get(module_id=3, user=user).link},
                     {'link': ActivityLink.objects.get(module_id=4, user=user).link},
                     {'link': ActivityLink.objects.get(module_id=5, user=user).link},
+                    {'link': ActivityLink.objects.get(module_id=6, user=user).link},
                 ])
             else:
                 formset = ActivitiesForm(initial=[{'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}])
