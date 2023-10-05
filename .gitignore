@@ -7,3 +7,4 @@ Lib/
 Scripts/
 *.sqlite3
 wikiconecta/settings_local.py
+*.pkl
