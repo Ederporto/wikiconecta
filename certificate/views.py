@@ -53,11 +53,9 @@ def certificate(request):
                     {'link': ActivityLink.objects.get(module_id=3, user=user).link},
                     {'link': ActivityLink.objects.get(module_id=4, user=user).link},
                     {'link': ActivityLink.objects.get(module_id=5, user=user).link},
-                    {'link': ActivityLink.objects.get(module_id=6, user=user).link},
                 ])
             else:
-                formset = ActivitiesForm(
-                    initial=[{'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}])
+                formset = ActivitiesForm(initial=[{'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}, {'link': ""}])
 
         user_requested_certificate = user.requested_certificate
         date_of_request = user.date_of_request or None
