@@ -8,18 +8,18 @@
     <div class="w3-container">
         <h1>{% trans "WikiConecta" %}</h1>
         <div class="w3-container">
-            {% if user.is_authenticated %}
-                <p>{% blocktrans with username=user.username %}Welcome, {{ username }}!{% endblocktrans %}</p>
-            {% else %}
-                <p>{% blocktrans %}Welcome!{% endblocktrans %}</p>
-            {% endif %}
+            <p>{% blocktrans %}Welcome{% endblocktrans %}{% if user.is_authenticated %}, {{ user.username }}{% endif %}!</p>
         </div>
         <h2>{% trans "About the course" %}</h2>
         <div class="w3-container" style="display:flex; flex-direction:column;">
             <p>{% blocktrans %}The Wikiconecta is an initiative from <a target="_blank" href="https://meta.wikimedia.org/wiki/Wiki_Movement_Brazil_User_Group/pt-br" aria-label="Wiki Movimento Brasil's page">Wiki Movement Brazil</a>.{% endblocktrans %}</p>
             <p>{% blocktrans %}It was developed over several months of research and work, and counted with the participation of <a target="_blank" href="https://pt.wikiversity.org/wiki/WikiConecta/Expediente" aria-label="Wikimedians involved">several Wikimedians</a>, committed to free knowledge.{% endblocktrans %}</p>
-            <p>{% blocktrans %}The course is divided into modules, which one of them subdivided into units. You can check the <a target="_blank" href="https://pt.wikiversity.org/wiki/WikiConecta/Módulos" aria-label="Pages with the modules of the course">course's summary and content</a>. You can also <a target="_blank" href="https://outreachdashboard.wmflabs.org/courses/Grupo_de_Usuários_Wiki_Movimento_Brasil/WikiConecta" aria-label="Enrollment page">enroll in to participate in the course</a> and later get certificated.{% endblocktrans %}</p>
-            <p>{% blocktrans %}If you have any questions about this course, write to <a target="_blank" href="mailto:educacao@wmnobrasil.org" aria-label="Email of the project">educacao@wmnobrasil.org</a>.{% endblocktrans %}</p>
+        </div>
+        <div class="w3-container" style="display:flex; flex-direction: column;">
+            <h2>{% trans "Certification" %}</h2>
+            <p>{% blocktrans %}The course is divided into 6 modules, which one of them subdivided into units. With the exception of the "Module 1 - Introduction", every module has an activity that must be completed in order to request the course's free certificate of completion. For that, it is also required to be <a target="_blank" href="https://outreachdashboard.wmflabs.org/courses/Grupo_de_Usuários_Wiki_Movimento_Brasil/WikiConecta" aria-label="Enrollment page">enrolled in WikiConecta</a>.{% endblocktrans %}</p>
+            <p>{% blocktrans %}Once you are enrolled in the course, and after you have completed the activities, click in the "Certificate" button in the left menu to request the certificate.{% endblocktrans %}</p>
+            <p>{% blocktrans %}If you need help to navigate the tool, access the <a target="_blank" href="https://pt.wikiversity.org/wiki/WikiConecta/Tutorial_certificado" aria-label="Tutorial of the certification proccess">tutorial made by the WMB team</a>.{% endblocktrans %}</p>
         </div>
         <h2>{% trans "What you will learn" %}</h2>
         <div class="w3-container" style="display:flex; flex-direction: column;">
@@ -32,7 +32,6 @@
                 <li>{% trans "Find more advanced information about Wikimedia projects of your interest;" %}</li>
                 <li>{% trans "Know how to ask for funding to develop your wiki-education programs." %}</li>
             </ul>
-            <p style="font-size:85%">{% blocktrans %}<b>Attention!</b> This course does not intended to replace existing materials, nor to delve into specific and advanced details of the Wikimedia projects. Our goal is to facilitate the entry of educators interested in the Wikimedia universe, including by gathering and systematizing existing content.{% endblocktrans %}</p>
         </div>
     </div>
 {% endblock %}
