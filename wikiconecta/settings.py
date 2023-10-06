@@ -117,7 +117,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 's__wikiconectadb',
+#         'NAME': 's55564__wikiconectadb',
 #         'USER': config['client']['user'],
 #         'PASSWORD': config['client']['password'],
 #         'HOST': 'tools.db.svc.wikimedia.cloud',
