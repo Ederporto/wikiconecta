@@ -97,36 +97,6 @@ LOGIN_REDIRECT_URL = 'homepage'
 
 WSGI_APPLICATION = 'wikiconecta.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# HOME = os.environ.get('HOME')
-# replica_path = HOME + '/replica.my.cnf'
-# if os.path.exists(replica_path):
-#     config = configparser.ConfigParser()
-#     config.read(replica_path)
-# else:
-#     print('replica.my.cnf file not found')
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 's55564__wikiconectadb',
-#         'USER': config['client']['user'],
-#         'PASSWORD': config['client']['password'],
-#         'HOST': 'tools.db.svc.wikimedia.cloud',
-#         'PORT': '',
-#     }
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
