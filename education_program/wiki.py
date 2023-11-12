@@ -93,7 +93,7 @@ def build_number_of_education_programs_phrase(number_of_education_programs):
     if number_of_education_programs == 1:
         return str(number_of_education_programs) + " programa de educação registrado até o momento''\n"
     else:
-        str(number_of_education_programs) + " programas de educação registrados até o momento''\n"
+        return str(number_of_education_programs) + " programas de educação registrados até o momento''\n"
 
 
 def build_institution(institution):
