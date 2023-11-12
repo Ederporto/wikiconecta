@@ -1,7 +1,8 @@
 from django.conf import settings
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, permission_required
 from .forms import EducationProgramForm, ProfessorFormset, InstitutionFormset
+from .models import EducationProgram
 from .wiki import edit_page, build_states, build_mapframe
 from django.utils.translation import gettext_lazy as _
 
@@ -40,3 +41,15 @@ def insert_education_program(request):
             'professor_formset': professor_formset,
             'institution_formset': institution_formset
         })
+
+
+@permission_required("education_program.change_educationprogram")
+def update_education_program(request, education_program_id):
+    obj = get_object_or_404(EducationProgram, id=education_program_id)
+    context = {}
+    if request.method == "GET":
+        program_form = EducationProgramForm(instance=obj, prefix='program')
+        context = {
+            "education_program": program_form
+        }
+    return render(request, "education_program/update_education_program.html", context)
