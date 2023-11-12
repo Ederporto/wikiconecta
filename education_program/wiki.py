@@ -80,20 +80,20 @@ def build_states():
 def build_state(state):
     states = settings.STATES
     institutions = Institution.objects.filter(state=state)
-    number_of_edutcation_programs = EducationProgram.objects.filter(institution__state=state).count()
+    number_of_education_programs = EducationProgram.objects.filter(institution__state=state).count()
 
-    if not number_of_edutcation_programs:
+    if not number_of_education_programs:
         text = "==" + dict(states)[state] + "==\n"
     else:
-        text = "==" + dict(states)[state] + "==\n''" + build_number_of_education_programs_phrase(number_of_edutcation_programs) + "\n\n".join([build_institution(institution) for institution in institutions])
+        text = "==" + dict(states)[state] + "==\n''" + build_number_of_education_programs_phrase(number_of_education_programs) + "\n\n".join([build_institution(institution) for institution in institutions])
     return text
 
 
-def build_number_of_education_programs_phrase(number_of_edutcation_programs):
-    if number_of_edutcation_programs == 1:
-        return str(number_of_edutcation_programs) + " programa de educação registrado até o momento''\n"
+def build_number_of_education_programs_phrase(number_of_education_programs):
+    if number_of_education_programs == 1:
+        return str(number_of_education_programs) + " programa de educação registrado até o momento''\n"
     else:
-        str(number_of_edutcation_programs) + " programas de educação registrados até o momento''\n"
+        str(number_of_education_programs) + " programas de educação registrados até o momento''\n"
 
 
 def build_institution(institution):
