@@ -4,8 +4,11 @@
     --dark-purple: rgb(37, 41, 107);
     --cyan: rgb(89, 178, 239);
     --pink: rgb(195, 0, 65);
+    --dark-pink: rgb(107, 0, 34);
     --orange: rgb(253, 150, 68);
     --yellow: rgb(253, 189, 71);
+    --green: rgb(80, 164, 47);
+    --dark-green: rgb(54, 111, 32);
     --black: rgb(0, 0, 0);
     --light-grey: rgb(220, 220, 220);
     --main-font: 'Baloo 2', cursive;
@@ -50,7 +53,7 @@ h2 { font-family:"Baloo 2", sans-serif; margin:0; background-color:var(--yellow)
 .yellow { border:0.25em solid var(--yellow); color:var(--black); transition:all 500ms ease-in-out;}
 .yellow:hover { border:0.25em solid var(--orange); }
 
-input { margin-bottom:1em; }
+input, select { margin-bottom:1em; }
 .red_fill { color:var(--pink); font-size:85% }
 
 .separator {
@@ -67,8 +70,21 @@ input { margin-bottom:1em; }
 .custom_button_submitt { border-radius:1.5em; padding:1em; border:none; margin-bottom:1em; color:var(--light-grey); background-color:var(--purple); transition:all 500ms ease-in-out; }
 .custom_button_submitt:hover { background-color:var(--dark-purple); }
 .custom_form { display:flex; flex-direction:column; max-width:500px; margin:1em 0; }
+.custom_form_large { display:flex; flex-direction:column; margin:1em 0; }
 p { margin-block-end: 0; }
 @media screen and (max-width: 600px) {
     .navbar_wrapper { flex-basis: 5em; }
     .nav_block span { font-size: 11px; }
 }
+
+#add-button path, #remove-button path { fill:var(--purple); transition:all 500ms ease-in-out; }
+#add-button:hover path, #remove-button:hover path { fill:var(--dark-purple); }
+
+.double_field { display:flex; flex-direction:row; justify-content:space-evenly; gap:1em; }
+.double_field input { flex:1; }
+.add-more { border-radius:1.5em; padding:0.5em 0.75em; border:none; width:fit-content; margin-bottom:1em; background-color:var(--green); color:white; transition:all 500ms ease-in-out; }
+.add-more:hover { background-color:var(--dark-green); color:white; transition:all 500ms ease-in-out; }
+.add-more svg { vertical-align: middle; }
+.white_fill { fill: white; }
+.delete_button { fill: var(--pink); transition: all 500ms ease-in-out; }
+.delete_button:hover { fill: var(--dark-pink); }

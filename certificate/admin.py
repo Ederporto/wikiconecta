@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import ActivityLink, Certificate, CourseModule
 
-# Register your models here.
+admin.site.register(ActivityLink)
+admin.site.register(Certificate)
+admin.site.register(CourseModule)

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user_profile',
     'certificate',
+    'education_program',
     'social_django',
 ]
 

@@ -19,9 +19,10 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include('user_profile.urls')),
     path('', include('certificate.urls')),
+    path('education_program/', include('education_program.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 

@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Add an Education Program" %}{% endblock %}
+
+{% block content %}
+    <div class="w3-container">
+        <div class="w3-row">
+            <div class="w3-quarter invisible">&nbsp;</div>
+            <div class="w3-half"><h1>{% trans "Add an Education Program" %}</h1></div>
+            <div class="w3-quarter invisible">&nbsp;</div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-quarter invisible">&nbsp;</div>
+            <div class="w3-half">{% trans "To insert an Education Program, fill the fields below" %}</div>
+            <div class="w3-quarter invisible">&nbsp;</div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-quarter invisible">&nbsp;</div>
+            <div class="w3-half">
+                <form method="post" class="custom_form_large">
+                    <div class="w3-container" style="display: flex; flex-direction: row; flex:1; gap:1em; justify-content: space-between; flex-wrap: wrap;">
+                        {% csrf_token %}
+                        <div class="w3-container" style="display: flex; flex-direction: column; flex:1; ">
+                            <label for="id_program-name">{% trans "Course name" %}*:</label>
+                            {{ program_form.name }}
+                            <div id="institutions">
+                                {{ institution_formset.management_form }}
+                                {% for institution_form in institution_formset %}
+                                    <div class="double_field">
+                                    <div style="width:1.5em">&nbsp;</div>
+                                        <label for="id_institution-0-name" style="flex:0">{% trans "Institution" %}*:</label>
+                                        <input type="text" name="institution-0-name" maxlength="280" id="id_institution-0-name" required>
+                                        <label for="id_institution-0-postal_code" style="flex:0">{% trans "Postal code" %}*:</label>
+                                        <input type="text" name="institution-0-postal_code" maxlength="20" id="id_institution-0-postal_code" required>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div>
+                                <button class="custom_button add-more" type="button" id="add-institutions">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="1.5em" height="1.5em">
+                                        <path class="white_fill" d="m136.5668188.5615853C58.6107512-6.3947442-6.5938296,58.5304888.651056,136.4986296c5.2160735,59.7079477,53.3228463,107.8222673,113.021436,113.0393999,77.9560677,6.9561769,142.8713413-57.9689035,135.9157628-135.6472799C244.3721814,53.8928849,196.2654086,5.7788705,136.5668188.5615853Zm51.0328033,144.4882224h-42.5000736v42.5000007c0,11.0461427-8.9550936,20.0000003-20.0000346,20.0000003s-20.0000346-8.9538576-20.0000346-20.0000003v-42.5000007h-42.5000736c-11.044941,0-20.0000346-8.9538576-20.0000346-20.0000003s8.9550936-20.0000003,20.0000346-20.0000003h42.5000736v-42.5000007c0-11.0461427,8.9550936-20.0000003,20.0000346-20.0000003s20.0000346,8.9538576,20.0000346,20.0000003v42.5000007h42.5000736c11.044941,0,20.0000346,8.9538576,20.0000346,20.0000003s-8.9550936,20.0000003-20.0000346,20.0000003Z"/>
+                                    </svg>
+                                    {% trans "Add more institutions" %}
+                                </button>
+                            </div>
+                            <label for="id_program-start_date">{% trans "Start date" %}*:</label>
+                            {{ program_form.start_date }}
+                            <label for="id_program-end_date">{% trans "End date" %}*:</label>
+                            {{ program_form.end_date }}
+                            <label for="id_program-outreach_link">{% trans "Link" %}:</label>
+                            {{ program_form.link }}
+                            <label for="id_program-course_type">{% trans "Course type" %}*:</label>
+                            <div id="id_program-course_type" style="display:flex; gap: 2em;">
+                                <label for="id_program-course_type_0">
+                                    <input type="radio" name="program-course_type" value="in_person" required="" id="id_program-course_type_0">
+                                    {% trans "In person" %}
+                                </label>
+                                <label for="id_program-course_type_1">
+                                    <input type="radio" name="program-course_type" value="hybrid" required="" id="id_program-course_type_1">
+                                    {% trans "Hybrid" %}
+                                </label>
+                                <label for="id_program-course_type_2">
+                                    <input type="radio" name="program-course_type" value="online" required="" id="id_program-course_type_2">
+                                    {% trans "Online" %}
+                                </label>
+                            </div>
+                            <label for="id_program-number_students">{% trans "Number of students" %}:</label>
+                            {{ program_form.number_students }}
+                            <div id="professors">
+                                {{ professor_formset.management_form }}
+                                {% for professor_form in professor_formset %}
+                                    <div class="double_field">
+                                    <div style="width:1.5em">&nbsp;</div>
+                                        <label for="id_professor-0-name" style="flex:0">{% trans "Professor" %}*:</label>
+                                        <input type="text" name="professor-0-name" maxlength="280" id="id_professor-0-name" required>
+                                        <label for="id_professor-0-username" style="flex:0">{% trans "Username" %}:</label>
+                                        <input type="text" name="professor-0-username" maxlength="280" id="id_professor-0-username">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div>
+                                <button class="custom_button add-more" type="button" id="add-professors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="1.5em" height="1.5em">
+                                        <path class="white_fill" d="m136.5668188.5615853C58.6107512-6.3947442-6.5938296,58.5304888.651056,136.4986296c5.2160735,59.7079477,53.3228463,107.8222673,113.021436,113.0393999,77.9560677,6.9561769,142.8713413-57.9689035,135.9157628-135.6472799C244.3721814,53.8928849,196.2654086,5.7788705,136.5668188.5615853Zm51.0328033,144.4882224h-42.5000736v42.5000007c0,11.0461427-8.9550936,20.0000003-20.0000346,20.0000003s-20.0000346-8.9538576-20.0000346-20.0000003v-42.5000007h-42.5000736c-11.044941,0-20.0000346-8.9538576-20.0000346-20.0000003s8.9550936-20.0000003,20.0000346-20.0000003h42.5000736v-42.5000007c0-11.0461427,8.9550936-20.0000003,20.0000346-20.0000003s20.0000346,8.9538576,20.0000346,20.0000003v42.5000007h42.5000736c11.044941,0,20.0000346,8.9538576,20.0000346,20.0000003s-8.9550936,20.0000003-20.0000346,20.0000003Z"/>
+                                    </svg>
+                                    {% trans "Add more professors" %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="custom_button_submitt" type="submit" value="{% trans 'Update' %}">
+                </form>
+                <div id="empty_form" style="display:none">{{ professor_formset.empty_form }}</div>
+            </div>
+            <div class="w3-quarter invisible">&nbsp;</div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function remove_professor(e){
+            let managementTotalFormsElem = $('#id_professor-TOTAL_FORMS');
+            let formNum = managementTotalFormsElem.val();
+            $("#container_professor-"+e.dataset["delete"]).remove();
+            managementTotalFormsElem.val(parseInt(formNum) - 1);
+        }
+
+        function remove_institution(e){
+            let managementTotalFormsElem = $('#id_institution-TOTAL_FORMS');
+            let formNum = managementTotalFormsElem.val();
+            $("#container_institution-"+e.dataset["delete"]).remove();
+            managementTotalFormsElem.val(parseInt(formNum) - 1);
+        }
+
+        $(document).ready(function () {
+            $('#add-professors').click(function() {
+                let managementTotalFormsElem = $('#id_professor-TOTAL_FORMS');
+                let formNum = managementTotalFormsElem.val();
+                let professor_label = "{% trans 'Professor' %}";
+                let username_label = "{% trans 'Username' %}";
+
+                let newForm = "<div class=\"double_field\" id=\"container_professor-" + formNum + "\">" +
+                    "<div class=\"delete_button\" type=\"button\" data-delete=\"" + formNum + "\" onclick=\"remove_professor(this);\" ><svg viewBox=\"0 0 250 250\" width=\"1.5em\" height=\"1.5em\"><path d=\"m205.1304641,29.0845365c-46.1094442-38.7373076-114.1421128-38.7424347-160.040637-.2175945-60.0372402,50.2053598-60.2347336,142.2227927.0148913,192.2325922,45.9043831,38.5323477,113.9372959,38.5376579,159.8358201.0126956,60.0372402-50.2054209,60.0304049-142.018199.1899256-192.0276933Zm-21.7979907,125.9718738c7.8101411,7.8109393,7.8091646,20.4747539,0,28.2848387-7.8094087,7.8100848-20.4719292,7.8110003-28.2820703.000061l-30.0495013-30.0526335-30.0495013,30.0526335c-7.8094087,7.8101458-20.4719292,7.8110003-28.2820703.000061s-7.8091646-20.4747539,0-28.2848387l30.0495013-30.0526945-30.0492572-30.0525725c-7.8103852-7.8109393-7.8094087-20.4747539,0-28.2848387,7.8091646-7.8100848,20.4716851-7.8110003,28.2818262,0l30.0495013,30.0525725,30.0495013-30.0526335c7.8094087-7.8101458,20.4719292-7.8110003,28.2820703-.000061s7.8091646,20.4747539,0,28.2848387l-30.0495013,30.0526945,30.0495013,30.0525725Z\"/></svg></div>"+
+                    "<label for=\"id_professor-" + formNum + "-name\" style=\"flex:0\">" + professor_label + "*:</label>" +
+                    "<input type=\"text\" name=\"professor-" + formNum + "-name\" maxlength=\"280\" id=\"id_professor-" + formNum + "-name\" required>" +
+                    "<label for=\"id_professor-" + formNum + "-username\" style=\"flex:0\">" + username_label + ":</label>" +
+                    "<input type=\"text\" name=\"professor-" + formNum + "-username\" maxlength=\"280\" id=\"id_professor-" + formNum + "-username\">" +
+                    "</div>";
+
+                $("#professors").append(newForm);
+                managementTotalFormsElem.val(parseInt(formNum) + 1);
+            });
+        });
+
+        $(document).ready(function () {
+            $('#add-institutions').click(function() {
+                let managementTotalFormsElem = $('#id_institution-TOTAL_FORMS');
+                let formNum = managementTotalFormsElem.val();
+                let institution_label = "{% trans 'Institution' %}";
+                let postal_code_label = "{% trans 'Postal code' %}";
+
+                let newForm = "<div class=\"double_field\" id=\"container_institution-" + formNum + "\">" +
+                    "<div class=\"delete_button\" type=\"button\" data-delete=\"" + formNum + "\" onclick=\"remove_institution(this);\" ><svg viewBox=\"0 0 250 250\" width=\"1.5em\" height=\"1.5em\"><path d=\"m205.1304641,29.0845365c-46.1094442-38.7373076-114.1421128-38.7424347-160.040637-.2175945-60.0372402,50.2053598-60.2347336,142.2227927.0148913,192.2325922,45.9043831,38.5323477,113.9372959,38.5376579,159.8358201.0126956,60.0372402-50.2054209,60.0304049-142.018199.1899256-192.0276933Zm-21.7979907,125.9718738c7.8101411,7.8109393,7.8091646,20.4747539,0,28.2848387-7.8094087,7.8100848-20.4719292,7.8110003-28.2820703.000061l-30.0495013-30.0526335-30.0495013,30.0526335c-7.8094087,7.8101458-20.4719292,7.8110003-28.2820703.000061s-7.8091646-20.4747539,0-28.2848387l30.0495013-30.0526945-30.0492572-30.0525725c-7.8103852-7.8109393-7.8094087-20.4747539,0-28.2848387,7.8091646-7.8100848,20.4716851-7.8110003,28.2818262,0l30.0495013,30.0525725,30.0495013-30.0526335c7.8094087-7.8101458,20.4719292-7.8110003,28.2820703-.000061s7.8091646,20.4747539,0,28.2848387l-30.0495013,30.0526945,30.0495013,30.0525725Z\"/></svg></div>"+
+                    "<label for=\"id_institution-" + formNum + "-name\" style=\"flex:0\">" + institution_label + "*:</label>" +
+                    "<input type=\"text\" name=\"institution-" + formNum + "-name\" maxlength=\"280\" id=\"id_institution-" + formNum + "-name\" required>" +
+                    "<label for=\"id_institution-" + formNum + "-postal_code\" style=\"flex:0\">" + postal_code_label + "*:</label>" +
+                    "<input type=\"text\" name=\"institution-" + formNum + "-postal_code\" maxlength=\"280\" id=\"id_institution-" + formNum + "-username\" required>" +
+                    "</div>";
+
+                $("#institutions").append(newForm);
+                managementTotalFormsElem.val(parseInt(formNum) + 1);
+            });
+        });
+
+    </script>
+{% endblock %}

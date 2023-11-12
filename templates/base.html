@@ -17,6 +17,7 @@
     <div style="display:flex; height:100vh">
         {% block navbar %}{% include 'navbar.html' %}{% endblock %}
         <main class="w3-container">{% block content %}{% endblock %}</main>
+        {% block scripts %}{% endblock %}
     </div>
 </body>
 </html>
