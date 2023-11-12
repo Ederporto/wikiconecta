@@ -1,10 +1,12 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import EducationProgramForm, ProfessorFormset, InstitutionFormset
 from .wiki import edit_page, build_states, build_mapframe
 from django.utils.translation import gettext_lazy as _
 
 
+@login_required
 def insert_education_program(request):
     program_form = EducationProgramForm(request.POST or None, prefix='program')
     professor_formset = ProfessorFormset(request.POST or None, prefix='professor')
