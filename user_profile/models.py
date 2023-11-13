@@ -54,10 +54,12 @@ class UserModification(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.user.__str__() + " ({})".format(self.date_of_modification.strftime("%Y-%m-%dT%H:%M:%S"))
+        return self.user.__str__() + " ({})".format(self.date_of_modification.strftime("%Y-%m-%d %H:%M:%S"))
 
 
 class Participant(models.Model):
     username = models.CharField(_("username"), max_length=150, blank=True)
     last_date = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.username

@@ -34,3 +34,6 @@ class Certificate(models.Model):
     date_issued = models.DateTimeField(auto_now=True)
     certificate_hash = models.CharField(max_length=64, blank=True, null=True)
     certificate_type = models.CharField(max_length=12, choices=CHOICES)
+
+    def __str__(self):
+        return "(" + self.certificate_type + ") " + self.user.username + " - " + self.date_issued.strftime("%Y-%m-%d %H:%M:%S")
