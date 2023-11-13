@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.db.models import Sum, F
 from social_django.models import UserSocialAuth
 from requests_oauthlib import OAuth1Session
 from .models import EducationProgram, Institution
@@ -100,7 +101,7 @@ def build_institution(institution):
     education_programs = EducationProgram.objects.filter(institution=institution)
     text = """{{:WikiConecta/Instituição\n""" +\
            """  |instituição    = """ + institution.name + """\n""" + \
-           """  |instituição_id = """ + institution.id + """\n""" +\
+           """  |instituição_id = """ + str(institution.id) + """\n""" +\
            """  |programas      = \n""" + "\n".join([build_education_program(education_program) for education_program in education_programs]) + """\n}}"""
     return text
 
@@ -152,5 +153,6 @@ def build_features():
     institutions = Institution.objects.filter(education_program_institution__institution__isnull=False)
     for institution in institutions:
         number_of_education_programs = EducationProgram.objects.filter(institution=institution).count()
-        text.append(f'''    {{ "type": "Feature", "geometry": {{ "type": "Point", "coordinates": [{institution.lon}, {institution.lat}] }}, "properties": {{ "title": "{institution.name}", "description": "{{{{:WikiConecta/Instituição/Descrição no mapa|{institution.id}|{number_of_education_programs}}}}}", "marker-size": "small", "marker-color": "4a51d2", "stroke-width": 0 }} }}''')
+        number_of_students = EducationProgram.objects.filter(institution=institution).aggregate(total=Sum(F("number_students")))["total"]
+        text.append(f'''    {{ "type": "Feature", "geometry": {{ "type": "Point", "coordinates": [{institution.lon}, {institution.lat}] }}, "properties": {{ "title": "{institution.name}", "description": "{{{{:WikiConecta/Instituição/Descrição no mapa|{institution.id}|{number_of_education_programs}|{number_of_students}}}}}", "marker-size": "small", "marker-color": "4a51d2", "stroke-width": 0 }} }}''')
     return ",\n".join(text)
