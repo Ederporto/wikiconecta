@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import EducationProgramForm, ProfessorFormset, InstitutionFormset
 from .models import EducationProgram
-from .wiki import edit_page, build_states, build_mapframe
+from .wiki import edit_page, build_states, build_mapframe, get_number_of_students_of_a_outreach_dashboard_program
 from django.utils.translation import gettext_lazy as _
 
 
@@ -30,6 +30,10 @@ def insert_education_program(request):
             program = program_form.save()
             program.professor.set(list(set(professors_list)))
             program.institution.set(list(set(institutions_list)))
+            if program.link.startswith("https://outreachdashboard.wmflabs.org/courses/"):
+                outreach_number = get_number_of_students_of_a_outreach_dashboard_program(program.link)
+                if outreach_number:
+                    program.number_students = outreach_number
             program.save()
 
         edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
@@ -56,6 +60,14 @@ def update_education_program(request, education_program_id):
 
 
 def update_pages(request):
+    education_programs = EducationProgram.objects.all()
+
+    for program in education_programs:
+        if program.link.startswith("https://outreachdashboard.wmflabs.org/courses/"):
+            outreach_number = get_number_of_students_of_a_outreach_dashboard_program(program.link)
+            if outreach_number:
+                program.number_students = outreach_number
+                program.save()
     edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
     edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
     return redirect("https://pt.wikiversity.org/wiki/" + settings.LIST_PAGE)
