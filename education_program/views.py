@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import EducationProgramForm, ProfessorFormset, InstitutionFormset
 from .models import EducationProgram
@@ -36,8 +36,6 @@ def insert_education_program(request):
         edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
         return redirect("https://pt.wikiversity.org/wiki/WikiConecta")
     else:
-        edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
-        edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
         return render(request, "education_program/add_education_program.html", {
             'program_form': program_form,
             'professor_formset': professor_formset,
@@ -55,3 +53,9 @@ def update_education_program(request, education_program_id):
             "education_program": program_form
         }
     return render(request, "education_program/update_education_program.html", context)
+
+
+def update_pages(request):
+    edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
+    edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
+    return redirect("https://pt.wikiversity.org/w/" + settings.LIST_PAGE)
