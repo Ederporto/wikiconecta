@@ -55,7 +55,7 @@ def get_number_of_students_of_a_outreach_dashboard_program(link):
     if link.startswith("https://outreachdashboard.wmflabs.org/courses/"):
         course_name = link.replace("https://outreachdashboard.wmflabs.org/courses/","")
         df = pd.read_csv("https://outreachdashboard.wmflabs.org/course_students_csv?course="+course_name)
-        return df.shape[0] - 1
+        return df.shape[0]
     return ""
 
 
