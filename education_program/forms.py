@@ -60,6 +60,8 @@ class InstitutionForm(forms.ModelForm):
             address = brazilcep.get_address_from_cep(postal_code)
             city, state = get_city_state(address)
             location = get_location_from_postal_code(f"{address['street']} - {address['city']}")
+            if not location:
+                location = get_location_from_postal_code(f"{address['city']}, {address['uf']}")
             lat, lon = get_coordinates(location)
         except:
             city, state, lat, lon = "", "", 0, 0
