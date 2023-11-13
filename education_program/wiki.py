@@ -150,7 +150,7 @@ def build_mapframe():
 
 def build_features():
     text = []
-    institutions = Institution.objects.filter(education_program_institution__institution__isnull=False)
+    institutions = Institution.objects.filter(education_program_institution__institution__isnull=False).distinct()
     for institution in institutions:
         number_of_education_programs = EducationProgram.objects.filter(institution=institution).count()
         number_of_students = EducationProgram.objects.filter(institution=institution).aggregate(total=Sum(F("number_students")))["total"]
