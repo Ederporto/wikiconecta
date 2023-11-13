@@ -99,8 +99,9 @@ def build_number_of_education_programs_phrase(number_of_education_programs):
 def build_institution(institution):
     education_programs = EducationProgram.objects.filter(institution=institution)
     text = """{{:WikiConecta/Instituição\n""" +\
-           """  |instituição = """ + institution.name + """\n"""\
-           """  |programas   = \n""" + "\n".join([build_education_program(education_program) for education_program in education_programs]) + """\n}}"""
+           """  |instituição    = """ + institution.name + """\n""" + \
+           """  |instituição_id = """ + institution.id + """\n""" +\
+           """  |programas      = \n""" + "\n".join([build_education_program(education_program) for education_program in education_programs]) + """\n}}"""
     return text
 
 
@@ -127,9 +128,9 @@ def build_professors_fields(professors):
     professors_list = []
     for index, item in enumerate(professors):
         if item.username:
-            professors_list.append(f"      |docente_{index+1} = [[Utilizador(a):{item.username}|{item.name}]]")
+            professors_list.append(f"      |docente_{index+1}         = [[Utilizador(a):{item.username}|{item.name}]]")
         else:
-            professors_list.append(f"      |docente_{index + 1} = {item.name}")
+            professors_list.append(f"      |docente_{index + 1}         = {item.name}")
     return "\n".join(professors_list)
 
 
