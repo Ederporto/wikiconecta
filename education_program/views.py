@@ -58,4 +58,4 @@ def update_education_program(request, education_program_id):
 def update_pages(request):
     edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
     edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
-    return redirect("https://pt.wikiversity.org/w/" + settings.LIST_PAGE)
+    return redirect("https://pt.wikiversity.org/wiki/" + settings.LIST_PAGE)
