@@ -32,10 +32,12 @@ def insert_education_program(request):
             program.institution.set(list(set(institutions_list)))
             program.save()
 
-        edit_page(settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
-        edit_page(settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
+        edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
+        edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
         return redirect("https://pt.wikiversity.org/wiki/WikiConecta")
     else:
+        edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
+        edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
         return render(request, "education_program/add_education_program.html", {
             'program_form': program_form,
             'professor_formset': professor_formset,

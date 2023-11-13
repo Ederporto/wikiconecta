@@ -5,8 +5,8 @@ from requests_oauthlib import OAuth1Session
 from .models import EducationProgram, Institution
 
 
-def api_request(params, method):
-    usersocialauth = UserSocialAuth.objects.filter(provider='mediawiki').first()
+def api_request(request, params, method):
+    usersocialauth = UserSocialAuth.objects.filter(provider='mediawiki', user=request.user).first()
     oauth_token = usersocialauth.extra_data.get('access_token').get('oauth_token')
     oauth_token_secret = usersocialauth.extra_data.get('access_token').get('oauth_token_secret')
     client = OAuth1Session(
@@ -23,19 +23,19 @@ def api_request(params, method):
         return client.get(url, params=params, timeout=4)
 
 
-def get_token():
+def get_token(request):
     params = {
         "action": "query",
         "meta": "tokens",
         "format": "json",
         "formatversion": 2,
     }
-    response = api_request(params, "GET").json()
+    response = api_request(request, params, "GET").json()
     token = response["query"]["tokens"]["csrftoken"]
     return token
 
 
-def get_content_of_page():
+def get_content_of_page(request, ):
     params = {
         "action": "query",
         "prop": "revisions",
@@ -46,12 +46,12 @@ def get_content_of_page():
         "format": "json"
     }
 
-    response = api_request(params, "GET")
+    response = api_request(request, params, "GET")
     print(response.json())
 
 
-def edit_page(title, text, summary):
-    token = get_token()
+def edit_page(request, title, text, summary):
+    token = get_token(request)
     params = {
         "action": "edit",
         "title": title,
@@ -61,7 +61,7 @@ def edit_page(title, text, summary):
         "token": token
     }
 
-    response = api_request(params, "POST")
+    response = api_request(request, params, "POST")
     print(response.json())
 
 
