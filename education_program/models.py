@@ -48,4 +48,4 @@ class EducationProgram(models.Model):
                                           validators=[MinValueValidator(0)])
 
     def __str__(self):
-        return self.name + " (" + self.start_date.strftime("%m/%d/%Y'") + "-" + self.end_date.strftime("%m/%d/%Y'") + ")"
+        return self.name + " (" + self.start_date.strftime("%m/%d/%Y") + "-" + self.end_date.strftime("%m/%d/%Y") + ")"
