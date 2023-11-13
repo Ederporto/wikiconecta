@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 01:41-0300\n"
+"POT-Creation-Date: 2023-11-13 13:51-0300\n"
 "PO-Revision-Date: 2023-09-22 21:54+0300\n"
 "Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
 "Language: pt-br\n"
@@ -483,6 +483,8 @@ msgstr "Nome da Instituição ou da Universidade"
 #: .\education_program\models.py:9
 #: .\templates\education_program\add_education_program.html:35
 #: .\templates\education_program\add_education_program.html:143
+#: .\templates\education_program\update_education_program.html:38
+#: .\templates\education_program\update_education_program.html:149
 msgid "Postal code"
 msgstr "Código postal"
 
@@ -513,53 +515,65 @@ msgstr "Nome de usuário(a)"
 
 #: .\education_program\models.py:23
 #: .\templates\education_program\add_education_program.html:58
+#: .\templates\education_program\update_education_program.html:61
 msgid "In person"
 msgstr "Presencial"
 
 #: .\education_program\models.py:24
 #: .\templates\education_program\add_education_program.html:62
+#: .\templates\education_program\update_education_program.html:65
 msgid "Hybrid"
 msgstr "Híbrido"
 
 #: .\education_program\models.py:25
 #: .\templates\education_program\add_education_program.html:66
+#: .\templates\education_program\update_education_program.html:69
 msgid "Online"
 msgstr "Online"
 
 #: .\education_program\models.py:27
 #: .\templates\education_program\add_education_program.html:26
+#: .\templates\education_program\update_education_program.html:26
 msgid "Course name"
 msgstr "Nome do curso"
 
 #: .\education_program\models.py:28
 #: .\templates\education_program\add_education_program.html:48
+#: .\templates\education_program\update_education_program.html:51
 msgid "Start date"
 msgstr "Data de início"
 
 #: .\education_program\models.py:29
 #: .\templates\education_program\add_education_program.html:50
+#: .\templates\education_program\update_education_program.html:53
 msgid "End date"
 msgstr "Data de encerramento"
 
 #: .\education_program\models.py:30
 #: .\templates\education_program\add_education_program.html:52
+#: .\templates\education_program\update_education_program.html:55
 msgid "Link"
 msgstr "Link"
 
 #: .\education_program\models.py:31
 #: .\templates\education_program\add_education_program.html:54
+#: .\templates\education_program\update_education_program.html:57
 msgid "Course type"
 msgstr "Tipo de curso"
 
 #: .\education_program\models.py:32
 #: .\templates\education_program\add_education_program.html:33
 #: .\templates\education_program\add_education_program.html:142
+#: .\templates\education_program\update_education_program.html:36
+#: .\templates\education_program\update_education_program.html:148
 msgid "Institution"
 msgstr "Instituição"
 
 #: .\education_program\models.py:33
 #: .\templates\education_program\add_education_program.html:76
 #: .\templates\education_program\add_education_program.html:122
+#: .\templates\education_program\update_education_program.html:82
+#: .\templates\education_program\update_education_program.html:128
 msgid "Professor"
 msgstr "Professor(a)"
 
@@ -567,8 +581,7 @@ msgstr "Professor(a)"
 msgid "Number of students or participants"
 msgstr "Número de estudantes ou participantes"
 
-#: .\education_program\views.py:34 .\education_program\views.py:35
-#: .\education_program\views.py:38 .\education_program\views.py:39
+#: .\education_program\views.py:35 .\education_program\views.py:36
 msgid "Adding or editing education program"
 msgstr "Adicionando ou editando um programa de educação"
 
@@ -585,6 +598,8 @@ msgstr "Certificados do WikiConecta's"
 #: .\templates\certificate\manage_certificates.html:14
 #: .\templates\education_program\add_education_program.html:78
 #: .\templates\education_program\add_education_program.html:123
+#: .\templates\education_program\update_education_program.html:84
+#: .\templates\education_program\update_education_program.html:129
 msgid "Username"
 msgstr "Nome de usuário(a)"
 
@@ -662,25 +677,35 @@ msgid "Add an Education Program"
 msgstr "Adicionar um Programa de Educação"
 
 #: .\templates\education_program\add_education_program.html:16
+#: .\templates\education_program\update_education_program.html:16
 msgid "To insert an Education Program, fill the fields below"
-msgstr ""
+msgstr "Para inserir um Programa de Educação, preencha os campos abaixo"
 
 #: .\templates\education_program\add_education_program.html:45
+#: .\templates\education_program\update_education_program.html:48
 msgid "Add more institutions"
 msgstr "Adicionar mais instituições"
 
 #: .\templates\education_program\add_education_program.html:69
+#: .\templates\education_program\update_education_program.html:72
 msgid "Number of students"
 msgstr "Número de estudantes"
 
 #: .\templates\education_program\add_education_program.html:88
+#: .\templates\education_program\update_education_program.html:94
 msgid "Add more professors"
 msgstr "Adicionar mais professores(as)"
 
 #: .\templates\education_program\add_education_program.html:93
+#: .\templates\education_program\update_education_program.html:99
 #: .\templates\user_profile\profile.html:28
 msgid "Update"
 msgstr "Atualizar"
+
+#: .\templates\education_program\update_education_program.html:5
+#: .\templates\education_program\update_education_program.html:11
+msgid "Update an Education Program"
+msgstr "Modificar um Programa de Educação"
 
 #: .\templates\i18n.html:8
 msgid "Language"
@@ -960,122 +985,122 @@ msgstr "novo_sobrenome"
 msgid "new_email"
 msgstr "novo_email"
 
-#: .\wikiconecta\settings.py:161
+#: .\wikiconecta\settings.py:131
 msgid "English"
 msgstr "Inglês"
 
-#: .\wikiconecta\settings.py:162
+#: .\wikiconecta\settings.py:132
 msgid "Brazilian Portuguese"
 msgstr "Português brasileiro"
 
-#: .\wikiconecta\settings_local.py:21
+#: .\wikiconecta\settings_local.py:24
 msgid "Acre"
 msgstr "Acre"
 
-#: .\wikiconecta\settings_local.py:22
+#: .\wikiconecta\settings_local.py:25
 msgid "Alagoas"
 msgstr "Alagoas"
 
-#: .\wikiconecta\settings_local.py:23
+#: .\wikiconecta\settings_local.py:26
 msgid "Amazonas"
 msgstr "Amazonas"
 
-#: .\wikiconecta\settings_local.py:24
+#: .\wikiconecta\settings_local.py:27
 msgid "Amapá"
 msgstr "Amapá"
 
-#: .\wikiconecta\settings_local.py:25
+#: .\wikiconecta\settings_local.py:28
 msgid "Bahia"
 msgstr "Bahia"
 
-#: .\wikiconecta\settings_local.py:26
+#: .\wikiconecta\settings_local.py:29
 msgid "Ceará"
 msgstr "Ceará"
 
-#: .\wikiconecta\settings_local.py:27
+#: .\wikiconecta\settings_local.py:30
 msgid "Distrito Federal"
 msgstr "Distrito Federal"
 
-#: .\wikiconecta\settings_local.py:28
+#: .\wikiconecta\settings_local.py:31
 msgid "Espírito Santo"
 msgstr "Espírito Santo"
 
-#: .\wikiconecta\settings_local.py:29
+#: .\wikiconecta\settings_local.py:32
 msgid "Goiás"
 msgstr "Goiás"
 
-#: .\wikiconecta\settings_local.py:30
+#: .\wikiconecta\settings_local.py:33
 msgid "Maranhão"
 msgstr "Maranhão"
 
-#: .\wikiconecta\settings_local.py:31
+#: .\wikiconecta\settings_local.py:34
 msgid "Minas Gerais"
 msgstr "Minas Gerais"
 
-#: .\wikiconecta\settings_local.py:32
+#: .\wikiconecta\settings_local.py:35
 msgid "Mato Grosso do Sul"
 msgstr "Mato Grosso do Sul"
 
-#: .\wikiconecta\settings_local.py:33
+#: .\wikiconecta\settings_local.py:36
 msgid "Mato Grosso"
 msgstr "Mato Grosso"
 
-#: .\wikiconecta\settings_local.py:34
+#: .\wikiconecta\settings_local.py:37
 msgid "Pará"
 msgstr "Pará"
 
-#: .\wikiconecta\settings_local.py:35
+#: .\wikiconecta\settings_local.py:38
 msgid "Paraíba"
 msgstr "Paraíba"
 
-#: .\wikiconecta\settings_local.py:36
+#: .\wikiconecta\settings_local.py:39
 msgid "Pernambuco"
 msgstr "Pernambuco"
 
-#: .\wikiconecta\settings_local.py:37
+#: .\wikiconecta\settings_local.py:40
 msgid "Piauí"
 msgstr "Piauí"
 
-#: .\wikiconecta\settings_local.py:38
+#: .\wikiconecta\settings_local.py:41
 msgid "Paraná"
 msgstr "Paraná"
 
-#: .\wikiconecta\settings_local.py:39
+#: .\wikiconecta\settings_local.py:42
 msgid "Rio de Janeiro"
 msgstr "Rio de Janeiro"
 
-#: .\wikiconecta\settings_local.py:40
+#: .\wikiconecta\settings_local.py:43
 msgid "Rio Grande do Norte"
 msgstr "Rio Grande do Norte"
 
-#: .\wikiconecta\settings_local.py:41
+#: .\wikiconecta\settings_local.py:44
 msgid "Rondônia"
 msgstr "Rondônia"
 
-#: .\wikiconecta\settings_local.py:42
+#: .\wikiconecta\settings_local.py:45
 msgid "Roraima"
 msgstr "Roraima"
 
-#: .\wikiconecta\settings_local.py:43
+#: .\wikiconecta\settings_local.py:46
 msgid "Rio Grande do Sul"
 msgstr "Rio Grande do Sul"
 
-#: .\wikiconecta\settings_local.py:44
+#: .\wikiconecta\settings_local.py:47
 msgid "Santa Catarina"
 msgstr "Santa Catarina"
 
-#: .\wikiconecta\settings_local.py:45
+#: .\wikiconecta\settings_local.py:48
 msgid "Sergipe"
 msgstr "Sergipe"
 
-#: .\wikiconecta\settings_local.py:46
+#: .\wikiconecta\settings_local.py:49
 msgid "São Paulo"
 msgstr "São Paulo"
 
-#: .\wikiconecta\settings_local.py:47
+#: .\wikiconecta\settings_local.py:50
 msgid "Tocantins"
 msgstr "Tocantins"
 
-#: .\wikiconecta\settings_local.py:48
+#: .\wikiconecta\settings_local.py:51
 msgid "Other"
 msgstr "Outra localidade"
