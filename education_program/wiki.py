@@ -168,9 +168,9 @@ def build_features():
     text = []
     institutions = Institution.objects.filter(education_program_institution__institution__isnull=False).distinct()
     for institution in institutions:
-        number_of_education_programs = EducationProgram.objects.filter(institution=institution).count()
-        number_of_students = EducationProgram.objects.filter(
-            institution=institution).aggregate(total=Sum(F("number_students")))["total"]
+        number_of_education_programs = str(EducationProgram.objects.filter(institution=institution).count())
+        number_of_students = str(EducationProgram.objects.filter(
+            institution=institution).aggregate(total=Sum(F("number_students")))["total"])
         text.append("    { \"type\": \"Feature\", \"geometry\": { \"type\": \"Point\", \"coordinates\": [" +
                     institution.lon + ", " + institution.lat + "] }, \"properties\": { \"title\": \"" +
                     institution.name + "\", \"description\": \"{{:WikiConecta/Instituição/Descrição no mapa|" +
