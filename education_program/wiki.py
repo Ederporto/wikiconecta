@@ -175,5 +175,5 @@ def build_features():
                     str(institution.lon) + ", " + str(institution.lat) + "] }, \"properties\": { \"title\": \"" +
                     institution.name + "\", \"description\": \"{{:WikiConecta/Instituição/Descrição no mapa|" +
                     str(institution.id) + "|" + number_of_education_programs + "|" + number_of_students +
-                    "}}\", \"marker-size\": \"small\", \"marker-color\": \"4a51d2\", \"stroke-width\": 0 }} }}")
+                    "}}\", \"marker-size\": \"small\", \"marker-color\": \"4a51d2\", \"stroke-width\": 0 } }")
     return ",\n".join(text)
