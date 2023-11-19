@@ -53,7 +53,7 @@ def get_content_of_page(request, ):
 
 def get_number_of_students_of_a_outreach_dashboard_program(link):
     if link.startswith("https://outreachdashboard.wmflabs.org/courses/"):
-        course_name = link.replace("https://outreachdashboard.wmflabs.org/courses/","")
+        course_name = link.replace("https://outreachdashboard.wmflabs.org/courses/", "")
         df = pd.read_csv("https://outreachdashboard.wmflabs.org/course_students_csv?course="+course_name)
         return df.shape[0]
     return ""
@@ -76,8 +76,11 @@ def edit_page(request, title, text, summary):
 
 def build_states():
     states = dict(settings.STATES)
-    text = "__NOTOC____NOEDITSECTION__<templatestyles src=\"WikiConecta/Programas de educação.css\"/>\n" +\
-           "{{:WikiConecta/Mapa dos programas de educação brasileiros}}\n{{:WikiConecta/Adicionar programa de educação}}"
+    text = "__NOTOC____NOEDITSECTION__<templatestyles src=\"WikiConecta/Programas de educação.css\"/>\n" + \
+           "<noinclude>{{:WikiConecta/Programas de educação/Wikimedia e Educação no Brasil/script/nota}}</noinclude>\n" + \
+           "{{:WikiConecta/Programas de educação/Wikimedia e Educação no Brasil/script/texto}}\n" +\
+           "{{:WikiConecta/Mapa dos programas de educação brasileiros}}\n" +\
+           "{{:WikiConecta/Adicionar programa de educação}}"
 
     for state, state_name in states.items():
         text += "\n\n" + build_state(state)
@@ -95,7 +98,9 @@ def build_state(state):
     if not number_of_education_programs:
         text = "==" + dict(states)[state] + "==\n"
     else:
-        text = "==" + dict(states)[state] + "==\n''" + build_number_of_education_programs_phrase(number_of_education_programs) + "\n\n".join([build_institution(institution) for institution in institutions])
+        text = "==" + dict(states)[state] + "==\n''" +\
+               build_number_of_education_programs_phrase(number_of_education_programs) +\
+               "\n\n".join([build_institution(institution) for institution in institutions])
     return text
 
 
@@ -111,7 +116,9 @@ def build_institution(institution):
     text = """{{:WikiConecta/Instituição\n""" +\
            """  |instituição    = """ + institution.name + """\n""" + \
            """  |instituição_id = """ + str(institution.id) + """\n""" +\
-           """  |programas      = \n""" + "\n".join([build_education_program(education_program) for education_program in education_programs]) + """\n}}"""
+           """  |programas      = \n""" +\
+           "\n".join([build_education_program(education_program) for education_program in education_programs]) +\
+           """\n}}"""
     return text
 
 
@@ -162,6 +169,11 @@ def build_features():
     institutions = Institution.objects.filter(education_program_institution__institution__isnull=False).distinct()
     for institution in institutions:
         number_of_education_programs = EducationProgram.objects.filter(institution=institution).count()
-        number_of_students = EducationProgram.objects.filter(institution=institution).aggregate(total=Sum(F("number_students")))["total"]
-        text.append(f'''    {{ "type": "Feature", "geometry": {{ "type": "Point", "coordinates": [{institution.lon}, {institution.lat}] }}, "properties": {{ "title": "{institution.name}", "description": "{{{{:WikiConecta/Instituição/Descrição no mapa|{institution.id}|{number_of_education_programs}|{number_of_students}}}}}", "marker-size": "small", "marker-color": "4a51d2", "stroke-width": 0 }} }}''')
+        number_of_students = EducationProgram.objects.filter(
+            institution=institution).aggregate(total=Sum(F("number_students")))["total"]
+        text.append("    { \"type\": \"Feature\", \"geometry\": { \"type\": \"Point\", \"coordinates\": [" +
+                    institution.lon + ", " + institution.lat + "] }, \"properties\": { \"title\": \"" +
+                    institution.name + "\", \"description\": \"{{:WikiConecta/Instituição/Descrição no mapa|" +
+                    institution.id + "|" + number_of_education_programs + "|" + number_of_students +
+                    "}}\", \"marker-size\": \"small\", \"marker-color\": \"4a51d2\", \"stroke-width\": 0 }} }}")
     return ",\n".join(text)
