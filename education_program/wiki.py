@@ -131,7 +131,8 @@ def build_education_program(education_program):
     course_type = education_program.get_course_type_display() if education_program.course_type else ""
 
     text = """    {{:WikiConecta/Programa de educação\n""" +\
-           """      |nome_curso        = """ + name + """\n""" +\
+           """      |nome_curso        = """ + name + """\n""" + \
+           """      |id_curso          = """ + str(education_program.id) + """\n""" + \
            """      |link              = """ + link + """\n""" +\
            """      |data_início       = """ + start_date + """\n""" +\
            """      |data_fim          = """ + end_date + """\n""" +\
