@@ -86,6 +86,41 @@ class InstitutionForm(forms.ModelForm):
 InstitutionFormset = formset_factory(InstitutionForm, extra=1)
 
 
+class UpdateInstitutionForm(forms.ModelForm):
+    class Meta:
+        model = Institution
+        fields = "__all__"
+
+    def save(self, institution_id=None, commit=True, **kwargs):
+        name = self.cleaned_data.get('name')
+        postal_code = self.cleaned_data.get('postal_code')
+        state = self.cleaned_data.get('state')
+        city = self.cleaned_data.get('city')
+        lat = self.cleaned_data.get('lat')
+        lon = self.cleaned_data.get('lon')
+
+        if institution_id:
+            instance = Institution.objects.get(pk=institution_id)
+
+            if name:
+                instance.name = name
+            if postal_code:
+                instance.postal_code = postal_code
+            if state:
+                instance.state = state
+            if city:
+                instance.city = city
+            if lat:
+                instance.lat = lat
+            if lon:
+                instance.lon = lon
+
+            if commit:
+                instance.save()
+
+            return instance
+
+
 def get_location_from_postal_code(address):
     geolocator = Nominatim(user_agent="WikiConecta")
     location = geolocator.geocode(address, country_codes=["br"])

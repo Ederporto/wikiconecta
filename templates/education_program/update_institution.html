@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Update an Institution" %}{% endblock %}
+
+{% block content %}
+    <div class="w3-container">
+        <div class="w3-row">
+            <div class="w3-quarter invisible">&nbsp;</div>
+            <div class="w3-half"><h1>{% trans "Update an Institution" %}</h1></div>
+            <div class="w3-quarter invisible">&nbsp;</div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-quarter invisible">&nbsp;</div>
+            <div class="w3-half">{% trans "To update an Institution, fill the fields below" %}</div>
+            <div class="w3-quarter invisible">&nbsp;</div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-quarter invisible">&nbsp;</div>
+            <div class="w3-half">
+                <form method="post" class="custom_form_large">
+                    <div class="w3-container" style="display: flex; flex-direction: row; flex:1; gap:1em; justify-content: space-between; flex-wrap: wrap;">
+                        {% csrf_token %}
+                        <div class="w3-container" style="display: flex; flex-direction: column; flex:1; ">
+                            <label for="id_name">{% trans "Institution or University name" %}:</label>
+                            <input type="text" name="name" maxlength="280" id="id_name" value="{{ institution.instance.name }}">
+                            <label for="id_postal_code">{% trans "Postal code" %}:</label>
+                            <input type="text" name="postal_code" maxlength="20" id="id_postal_code" value="{{ institution.instance.postal_code }}">
+                            <label for="id_state">{% trans "State" %}:</label>
+                            <select name="state" id="id_state" required>
+                                <option value="">---------</option>
+                                <option value="AC" {% if institution.instance.state == "AC" %}selected{% endif %}>{% trans "Acre" %}</option>
+                                <option value="AL" {% if institution.instance.state == "AL" %}selected{% endif %}>{% trans "Alagoas" %}</option>
+                                <option value="AM" {% if institution.instance.state == "AM" %}selected{% endif %}>{% trans "Amazonas" %}</option>
+                                <option value="AP" {% if institution.instance.state == "AP" %}selected{% endif %}>{% trans "Amapá" %}</option>
+                                <option value="BA" {% if institution.instance.state == "BA" %}selected{% endif %}>{% trans "Bahia" %}</option>
+                                <option value="CE" {% if institution.instance.state == "CE" %}selected{% endif %}>{% trans "Ceará" %}</option>
+                                <option value="DF" {% if institution.instance.state == "DF" %}selected{% endif %}>{% trans "Distrito Federal" %}</option>
+                                <option value="ES" {% if institution.instance.state == "ES" %}selected{% endif %}>{% trans "Espírito Santo" %}</option>
+                                <option value="GO" {% if institution.instance.state == "GO" %}selected{% endif %}>{% trans "Goiás" %}</option>
+                                <option value="MA" {% if institution.instance.state == "MA" %}selected{% endif %}>{% trans "Maranhão" %}</option>
+                                <option value="MG" {% if institution.instance.state == "MG" %}selected{% endif %}>{% trans "Minas Gerais" %}</option>
+                                <option value="MS" {% if institution.instance.state == "MS" %}selected{% endif %}>{% trans "Mato Grosso do Sul" %}</option>
+                                <option value="MT" {% if institution.instance.state == "MT" %}selected{% endif %}>{% trans "Mato Grosso" %}</option>
+                                <option value="PA" {% if institution.instance.state == "PA" %}selected{% endif %}>{% trans "Pará" %}</option>
+                                <option value="PB" {% if institution.instance.state == "PB" %}selected{% endif %}>{% trans "Paraíba" %}</option>
+                                <option value="PE" {% if institution.instance.state == "PE" %}selected{% endif %}>{% trans "Pernambuco" %}</option>
+                                <option value="PI" {% if institution.instance.state == "PI" %}selected{% endif %}>{% trans "Piauí" %}</option>
+                                <option value="PR" {% if institution.instance.state == "PR" %}selected{% endif %}>{% trans "Paraná" %}</option>
+                                <option value="RJ" {% if institution.instance.state == "RJ" %}selected{% endif %}>{% trans "Rio de Janeiro" %}</option>
+                                <option value="RN" {% if institution.instance.state == "RN" %}selected{% endif %}>{% trans "Rio Grande do Norte" %}</option>
+                                <option value="RO" {% if institution.instance.state == "RO" %}selected{% endif %}>{% trans "Rondônia" %}</option>
+                                <option value="RR" {% if institution.instance.state == "RR" %}selected{% endif %}>{% trans "Roraima" %}</option>
+                                <option value="RS" {% if institution.instance.state == "RS" %}selected{% endif %}>{% trans "Rio Grande do Sul" %}</option>
+                                <option value="SC" {% if institution.instance.state == "SC" %}selected{% endif %}>{% trans "Santa Catarina" %}</option>
+                                <option value="SE" {% if institution.instance.state == "SE" %}selected{% endif %}>{% trans "Sergipe" %}</option>
+                                <option value="SP" {% if institution.instance.state == "SP" %}selected{% endif %}>{% trans "São Paulo" %}</option>
+                                <option value="TO" {% if institution.instance.state == "TO" %}selected{% endif %}>{% trans "Tocantins" %}</option>
+                                <option value="XX" {% if institution.instance.state == "XX" %}selected{% endif %}>{% trans "Other" %}</option>
+                            </select>
+                            <label for="id_city">{% trans "City" %}:</label>
+                            <input type="text" name="city" maxlength="280" id="id_city" value="{{ institution.instance.city }}">
+                            <label for="id_lat">{% trans "Latitude" %}:</label>
+                            <input type="number" name="lat" id="id_lat" step="any" value="{{ institution.instance.lat|floatformat:",-100" }}">
+                            <label for="id_lon">{% trans "Longitude" %}:</label>
+                            <input type="number" name="lon" id="id_lon" step="any" value="{{ institution.instance.lon|floatformat:",-100" }}">
+                        </div>
+                    </div>
+                    <input class="custom_button_submitt" type="submit" value="{% trans 'Update' %}">
+                </form>
+                <div id="empty_form" style="display:none">{{ professor_formset.empty_form }}</div>
+            </div>
+            <div class="w3-quarter invisible">&nbsp;</div>
+        </div>
+    </div>
+{% endblock %}

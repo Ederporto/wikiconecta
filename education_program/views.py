@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
-from .forms import EducationProgramForm, ProfessorFormset, InstitutionFormset
-from .models import EducationProgram
+from .forms import EducationProgramForm, ProfessorFormset, InstitutionFormset, UpdateInstitutionForm
+from .models import EducationProgram, Institution
 from .wiki import edit_page, build_states, build_mapframe, get_number_of_students_of_a_outreach_dashboard_program
 from django.utils.translation import gettext_lazy as _
 
@@ -57,6 +57,22 @@ def update_education_program(request, education_program_id):
             "education_program": program_form
         }
     return render(request, "education_program/update_education_program.html", context)
+
+
+@permission_required("education_program.change_institution")
+def update_institution(request, institution_id):
+    obj = get_object_or_404(Institution, id=institution_id)
+
+    if request.method == "POST":
+        institution_form = UpdateInstitutionForm(request.POST or None)
+        if institution_form.is_valid():
+            institution_form.save(institution_id=institution_id)
+        context = {"institution": institution_form}
+        return render(request, "education_program/update_institution.html", context)
+    if request.method == "GET":
+        institution_form = UpdateInstitutionForm(instance=obj)
+        context = {"institution": institution_form}
+        return render(request, "education_program/update_institution.html", context)
 
 
 def update_pages(request):
