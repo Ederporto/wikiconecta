@@ -24,13 +24,13 @@
                         {% csrf_token %}
                         <div class="w3-container" style="display: flex; flex-direction: column; flex:1; ">
                             <label for="id_program-name">{% trans "Course name" %}*:</label>
-                            <input type="text" name="program-name" maxlength="280" id="id_program-name" value="{{ education_program.instance.name }}" required>
+                            <input type="text" name="program-name" maxlength="280" id="id_program-name" value="{{ program_form.instance.name }}" required>
                             <div id="institutions">
-                                <input type="hidden" name="institution-TOTAL_FORMS" value="{{ education_program.instance.institution.all.count }}" id="id_institution-TOTAL_FORMS">
+                                <input type="hidden" name="institution-TOTAL_FORMS" value="{{ program_form.instance.institution.all.count }}" id="id_institution-TOTAL_FORMS">
                                 <input type="hidden" name="institution-INITIAL_FORMS" value="0" id="id_institution-INITIAL_FORMS">
                                 <input type="hidden" name="institution-MIN_NUM_FORMS" value="0" id="id_institution-MIN_NUM_FORMS">
                                 <input type="hidden" name="institution-MAX_NUM_FORMS" value="1000" id="id_institution-MAX_NUM_FORMS">
-                                {% for institution in education_program.instance.institution.all %}
+                                {% for institution in program_form.instance.institution.all %}
                                     <div class="double_field">
                                         {% if forloop.counter0 == 0 %}<div style="width:1.5em">&nbsp;</div>{% else %}<div class="delete_button" type="button" data-delete="{{ forloop.counter0 }}" onclick="remove_institution(this);" ><svg viewBox="0 0 250 250" width="1.5em" height="1.5em"><path d="m205.1304641,29.0845365c-46.1094442-38.7373076-114.1421128-38.7424347-160.040637-.2175945-60.0372402,50.2053598-60.2347336,142.2227927.0148913,192.2325922,45.9043831,38.5323477,113.9372959,38.5376579,159.8358201.0126956,60.0372402-50.2054209,60.0304049-142.018199.1899256-192.0276933Zm-21.7979907,125.9718738c7.8101411,7.8109393,7.8091646,20.4747539,0,28.2848387-7.8094087,7.8100848-20.4719292,7.8110003-28.2820703.000061l-30.0495013-30.0526335-30.0495013,30.0526335c-7.8094087,7.8101458-20.4719292,7.8110003-28.2820703.000061s-7.8091646-20.4747539,0-28.2848387l30.0495013-30.0526945-30.0492572-30.0525725c-7.8103852-7.8109393-7.8094087-20.4747539,0-28.2848387,7.8091646-7.8100848,20.4716851-7.8110003,28.2818262,0l30.0495013,30.0525725,30.0495013-30.0526335c7.8094087-7.8101458,20.4719292-7.8110003,28.2820703-.000061s7.8091646,20.4747539,0,28.2848387l-30.0495013,30.0526945,30.0495013,30.0525725Z"/></svg></div>{% endif %}
                                         <label for="id_institution-{{ forloop.counter0 }}-name" style="flex:0">{% trans "Institution" %}*:</label>
@@ -49,34 +49,34 @@
                                 </button>
                             </div>
                             <label for="id_program-start_date">{% trans "Start date" %}*:</label>
-                            <input type="date" name="program-start_date" value="{{ education_program.instance.start_date|date:"Y-m-d" }}" id="id_program-start_date" required>
+                            <input type="date" name="program-start_date" value="{{ program_form.instance.start_date|date:"Y-m-d" }}" id="id_program-start_date" required>
                             <label for="id_program-end_date">{% trans "End date" %}*:</label>
-                            <input type="date" name="program-end_date" value="{{ education_program.instance.end_date|date:"Y-m-d" }}" id="id_program-end_date" required>
+                            <input type="date" name="program-end_date" value="{{ program_form.instance.end_date|date:"Y-m-d" }}" id="id_program-end_date" required>
                             <label for="id_program-outreach_link">{% trans "Link" %}:</label>
-                            <input type="url" name="program-link" value="{{ education_program.instance.link }}" maxlength="200" id="id_program-link">
+                            <input type="url" name="program-link" value="{{ program_form.instance.link }}" maxlength="200" id="id_program-link">
                             <label for="id_program-course_type">{% trans "Course type" %}*:</label>
                             <div id="id_program-course_type" style="display:flex; gap: 2em;">
                                 <label for="id_program-course_type_0">
-                                    <input type="radio" name="program-course_type" value="in_person" required="" id="id_program-course_type_0" {% if education_program.instance.course_type == "in_person" %}checked{% endif %}>
+                                    <input type="radio" name="program-course_type" value="in_person" required="" id="id_program-course_type_0" {% if program_form.instance.course_type == "in_person" %}checked{% endif %}>
                                     {% trans "In person" %}
                                 </label>
                                 <label for="id_program-course_type_1">
-                                    <input type="radio" name="program-course_type" value="hybrid" required="" id="id_program-course_type_1" {% if education_program.instance.course_type == "hybrid" %}checked{% endif %}>
+                                    <input type="radio" name="program-course_type" value="hybrid" required="" id="id_program-course_type_1" {% if program_form.instance.course_type == "hybrid" %}checked{% endif %}>
                                     {% trans "Hybrid" %}
                                 </label>
                                 <label for="id_program-course_type_2">
-                                    <input type="radio" name="program-course_type" value="online" required="" id="id_program-course_type_2" {% if education_program.instance.course_type == "online" %}checked{% endif %}>
+                                    <input type="radio" name="program-course_type" value="online" required="" id="id_program-course_type_2" {% if program_form.instance.course_type == "online" %}checked{% endif %}>
                                     {% trans "Online" %}
                                 </label>
                             </div>
                             <label for="id_program-number_students">{% trans "Number of students" %}:</label>
-                            <input type="number" name="program-number_students" value="{{ education_program.instance.number_students }}" id="id_program-number_students">
+                            <input type="number" name="program-number_students" value="{{ program_form.instance.number_students }}" id="id_program-number_students">
                             <div id="professors">
-                                <input type="hidden" name="professor-TOTAL_FORMS" value="{{ education_program.instance.professor.all.count }}" id="id_professor-TOTAL_FORMS">
+                                <input type="hidden" name="professor-TOTAL_FORMS" value="{{ program_form.instance.professor.all.count }}" id="id_professor-TOTAL_FORMS">
                                 <input type="hidden" name="professor-INITIAL_FORMS" value="0" id="id_professor-INITIAL_FORMS">
                                 <input type="hidden" name="professor-MIN_NUM_FORMS" value="0" id="id_professor-MIN_NUM_FORMS">
                                 <input type="hidden" name="professor-MAX_NUM_FORMS" value="1000" id="id_professor-MAX_NUM_FORMS">
-                                {% for professor in education_program.instance.professor.all %}
+                                {% for professor in program_form.instance.professor.all %}
                                     <div class="double_field">
                                         {% if forloop.counter0 == 0 %}<div style="width:1.5em">&nbsp;</div>{% else %}<div class="delete_button" type="button" data-delete="{{ forloop.counter0 }}" onclick="remove_professor(this);" ><svg viewBox="0 0 250 250" width="1.5em" height="1.5em"><path d="m205.1304641,29.0845365c-46.1094442-38.7373076-114.1421128-38.7424347-160.040637-.2175945-60.0372402,50.2053598-60.2347336,142.2227927.0148913,192.2325922,45.9043831,38.5323477,113.9372959,38.5376579,159.8358201.0126956,60.0372402-50.2054209,60.0304049-142.018199.1899256-192.0276933Zm-21.7979907,125.9718738c7.8101411,7.8109393,7.8091646,20.4747539,0,28.2848387-7.8094087,7.8100848-20.4719292,7.8110003-28.2820703.000061l-30.0495013-30.0526335-30.0495013,30.0526335c-7.8094087,7.8101458-20.4719292,7.8110003-28.2820703.000061s-7.8091646-20.4747539,0-28.2848387l30.0495013-30.0526945-30.0492572-30.0525725c-7.8103852-7.8109393-7.8094087-20.4747539,0-28.2848387,7.8091646-7.8100848,20.4716851-7.8110003,28.2818262,0l30.0495013,30.0525725,30.0495013-30.0526335c7.8094087-7.8101458,20.4719292-7.8110003,28.2820703-.000061s7.8091646,20.4747539,0,28.2848387l-30.0495013,30.0526945,30.0495013,30.0525725Z"/></svg></div>{% endif %}
                                         <label for="id_professor-{{ forloop.counter0 }}-name" style="flex:0">{% trans "Professor" %}*:</label>

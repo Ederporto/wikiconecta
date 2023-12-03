@@ -49,14 +49,44 @@ def insert_education_program(request):
 
 @permission_required("education_program.change_educationprogram")
 def update_education_program(request, education_program_id):
-    obj = get_object_or_404(EducationProgram, id=education_program_id)
-    context = {}
-    if request.method == "GET":
-        program_form = EducationProgramForm(instance=obj, prefix='program')
-        context = {
-            "education_program": program_form
-        }
-    return render(request, "education_program/update_education_program.html", context)
+    program = get_object_or_404(EducationProgram, id=education_program_id)
+
+    program_form = EducationProgramForm(request.POST or None, prefix='program', instance=program)
+    professor_formset = ProfessorFormset(request.POST or None, prefix='professor')
+    institution_formset = InstitutionFormset(request.POST or None, prefix='institution')
+
+    if request.method == "POST":
+        professors_list = []
+        institutions_list = []
+        if professor_formset.is_valid():
+            for professor_form in professor_formset:
+                if professor_form.is_valid():
+                    professor = professor_form.save()
+                    professors_list.append(professor.id)
+        if institution_formset.is_valid():
+            for institution_form in institution_formset:
+                if institution_form.is_valid():
+                    institution = institution_form.save()
+                    institutions_list.append(institution.id)
+        if program_form.is_valid():
+            program = program_form.save()
+            program.professor.set(list(set(professors_list)))
+            program.institution.set(list(set(institutions_list)))
+            if program.link.startswith("https://outreachdashboard.wmflabs.org/courses/"):
+                outreach_number = get_number_of_students_of_a_outreach_dashboard_program(program.link)
+                if outreach_number:
+                    program.number_students = outreach_number
+            program.save()
+
+        edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
+        edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
+        return redirect("https://pt.wikiversity.org/wiki/WikiConecta")
+    else:
+        return render(request, "education_program/update_education_program.html", {
+            'program_form': program_form,
+            'professor_formset': professor_formset,
+            'institution_formset': institution_formset
+        })
 
 
 @permission_required("education_program.change_institution")
