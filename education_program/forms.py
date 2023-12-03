@@ -93,7 +93,10 @@ def get_location_from_postal_code(address):
 
 
 def get_coordinates(location):
-    return location.latitude, location.longitude
+    if location.latitude and location.longitude:
+        return location.latitude, location.longitude
+    else:
+        return 0, 0
 
 
 def get_city_state(address):

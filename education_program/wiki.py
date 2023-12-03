@@ -168,12 +168,19 @@ def build_features():
     text = []
     institutions = Institution.objects.filter(education_program_institution__institution__isnull=False).distinct()
     for institution in institutions:
-        number_of_education_programs = str(EducationProgram.objects.filter(institution=institution).count())
-        number_of_students = str(EducationProgram.objects.filter(
-            institution=institution).aggregate(total=Sum(F("number_students")))["total"])
-        text.append("    { \"type\": \"Feature\", \"geometry\": { \"type\": \"Point\", \"coordinates\": [" +
-                    str(institution.lon) + ", " + str(institution.lat) + "] }, \"properties\": { \"title\": \"" +
-                    institution.name + "\", \"description\": \"{{:WikiConecta/Instituição/Descrição no mapa|" +
-                    str(institution.id) + "|" + number_of_education_programs + "|" + number_of_students +
-                    "}}\", \"marker-size\": \"small\", \"marker-color\": \"4a51d2\", \"stroke-width\": 0 } }")
+        number_of_education_programs = EducationProgram.objects.filter(institution=institution).count()
+        number_of_students = EducationProgram.objects.filter(institution=institution).aggregate(total=Sum(F("number_students")))["total"]
+        if number_of_education_programs > 0:
+            if institution.lat == 0 and institution.lon == 0:
+                text.append("    { \"type\": \"Feature\", \"geometry\": { \"type\": \"Point\", \"coordinates\": [" +
+                            str(institution.lon) + ", " + str(institution.lat) + "] }, \"properties\": { \"title\": \"" +
+                            institution.name + "\", \"description\": \"{{:WikiConecta/Instituição/Descrição no mapa|" +
+                            str(institution.id) + "|" + str(number_of_education_programs) + "|" + str(number_of_students) +
+                            "}}\", \"marker-size\": \"small\", \"marker-color\": \"d24a4a\", \"stroke-width\": 0 } }")
+            else:
+                text.append("    { \"type\": \"Feature\", \"geometry\": { \"type\": \"Point\", \"coordinates\": [" +
+                            str(institution.lon) + ", " + str(institution.lat) + "] }, \"properties\": { \"title\": \"" +
+                            institution.name + "\", \"description\": \"{{:WikiConecta/Instituição/Descrição no mapa|" +
+                            str(institution.id) + "|" + str(number_of_education_programs) + "|" + str(number_of_students) +
+                            "}}\", \"marker-size\": \"small\", \"marker-color\": \"4a51d2\", \"stroke-width\": 0 } }")
     return ",\n".join(text)
