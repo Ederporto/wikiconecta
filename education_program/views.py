@@ -126,13 +126,13 @@ def update_pages(request):
 
 
 def list_institutions(request):
-    institutions = Institution.objects.filter(education_program_institution__institution__isnull=False).distinct.order_by("name")
+    institutions = Institution.objects.filter(education_program_institution__institution__isnull=False).distinct().order_by("name")
     context = {"institutions": institutions}
     return render(request, "education_program/list_education_programs_by_institution.html", context)
 
 
 def list_professors(request):
-    professors = Professor.objects.filter(education_program_professor__isnull=False).distinct.order_by("name")
+    professors = Professor.objects.filter(education_program_professor__isnull=False).distinct().order_by("name")
     context = {"professors": professors}
     return render(request, "education_program/list_education_programs_by_professor.html", context)
 
