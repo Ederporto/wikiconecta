@@ -89,6 +89,12 @@ def update_education_program(request, education_program_id):
         })
 
 
+def list_education_programs(request):
+    education_programs = EducationProgram.objects.all()
+    context = {"programs": education_programs}
+    return render(request, "education_program/list_education_programs.html", context)
+
+
 @permission_required("education_program.change_institution")
 def update_institution(request, institution_id):
     obj = get_object_or_404(Institution, id=institution_id)
@@ -117,3 +123,16 @@ def update_pages(request):
     edit_page(request, settings.LIST_PAGE, build_states(), _("Adding or editing education program"))
     edit_page(request, settings.MAP_PAGE, build_mapframe(), _("Adding or editing education program"))
     return redirect("https://pt.wikiversity.org/wiki/" + settings.LIST_PAGE)
+
+
+def list_institutions(request):
+    institutions = Institution.objects.all().order_by("name")
+    context = {"institutions": institutions}
+    return render(request, "education_program/list_education_programs_by_institution.html", context)
+
+
+def lang_ptbr_converter(lang):
+    if lang == "pt-br" or lang == "pt":
+        return "pt_BR"
+    else:
+        return lang

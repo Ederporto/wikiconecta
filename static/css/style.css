@@ -75,6 +75,7 @@ p { margin-block-end: 0; }
 @media screen and (max-width: 600px) {
     .navbar_wrapper { flex-basis: 5em; }
     .nav_block span { font-size: 11px; }
+    .userform { padding: 0 !important; }
 }
 
 #add-button path, #remove-button path { fill:var(--purple); transition:all 500ms ease-in-out; }
@@ -88,3 +89,7 @@ p { margin-block-end: 0; }
 .white_fill { fill: white; }
 .delete_button { fill: var(--pink); transition: all 500ms ease-in-out; }
 .delete_button:hover { fill: var(--dark-pink); }
+
+/*Forms*/
+.card-view-title { min-width: 50% !important; }
+.userform { padding: 1em; }

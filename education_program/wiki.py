@@ -92,7 +92,7 @@ def build_states():
 
 def build_state(state):
     states = settings.STATES
-    institutions = Institution.objects.filter(state=state)
+    institutions = Institution.objects.filter(state=state, education_program_institution__institution__isnull=False)
     number_of_education_programs = EducationProgram.objects.filter(institution__state=state).count()
 
     if not number_of_education_programs:
