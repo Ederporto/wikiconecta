@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{% trans "Education Programs by Institution" %}{% endblock %}
+{% block title %}{% trans "Education Programs by Professor" %}{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
@@ -10,19 +10,14 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{% trans "List of education programs by institution" %}</h1>
+    <h1>{% trans "List of education programs by professor" %}</h1>
     <p><a href="{% url 'list_education_programs' %}" aria-label="{% trans 'Education programs' %}">{% trans "Click here to see the general table of education programs" %}</a></p>
-    <p><a href="{% url 'list_education_programs_by_professor' %}" aria-label="{% trans 'Education programs by professor' %}">{% trans "Click here to see the education programs divided by professor" %}</a></p>
-    {% for institution in institutions %}
-        <h2 id="{{ institution.id }}">{{ institution.name }}</h2>
-        <p>{{ institution.city }}, {{ institution.state }} - {{ institution.postal_code }} - {% if institution.lat and institution.lon %}
-            <svg class="navbar-icon" viewBox="0 0 250 250" width="1em" height="1em"><path class="purple_fill" d="m222.7625255,97.7625122C222.7625255,43.7979736,178.9644298,0,125.0000743,0c-.4685059,0-.9362793.0032349-1.4064941.0098877C70.9195079.7514038,27.9456309,43.7623901,27.2464122,96.4370728c-.2988281,22.5125122,7.027832,43.3121948,19.5566406,59.9829712h-.0129395l65.369873,87.1599121c3.2102051,4.2800293,8.0249023,6.4200439,12.8400879,6.4200439s9.6298828-2.1400146,12.8400879-6.4200439l65.369873-87.1599121h-.0129395c12.2824707-16.3430786,19.5654297-36.6544189,19.5654297-58.6575317Zm-92.9221191,139.8171997c-1.5795898,2.105835-3.7106934,2.4202881-4.840332,2.4202881s-3.2607422-.3144531-4.8400879-2.4200439l-65.362793-87.1677856c-11.7424316-15.6245117-17.8117676-34.2428589-17.5517578-53.8423462.3034668-22.8567505,9.4511719-44.4326172,25.7580566-60.7531738,16.3068848-16.3206177,37.8747559-25.4860229,60.7319336-25.8078003.4228516-.0059814.8432617-.0088501,1.2646484-.0088501,48.392334,0,87.7624512,39.3701172,87.7624512,87.7625122,0,19.1583252-6.0720215,37.3643188-17.5595703,52.6497192l-65.3625488,87.1674805Z"/><path class="purple_fill" d="m222.7625255,97.7625122C222.7625255,43.7979736,178.9644298,0,125.0000743,0c-.4685059,0-.9362793.0032349-1.4064941.0098877C70.9195079.7514038,27.9456309,43.7623901,27.2464122,96.4370728c-.2988281,22.5125122,7.027832,43.3121948,19.5566406,59.9829712h-.0129395l65.369873,87.1599121c3.2102051,4.2800293,8.0249023,6.4200439,12.8400879,6.4200439s9.6298828-2.1400146,12.8400879-6.4200439l65.369873-87.1599121h-.0129395c12.2824707-16.3430786,19.5654297-36.6544189,19.5654297-58.6575317Zm-97.7624512,48.8811646c-26.9963379,0-48.8813477-21.8848877-48.8813477-48.8812256s21.8850098-48.8812256,48.8813477-48.8812256,48.8811035,21.8848877,48.8811035,48.8812256-21.8847656,48.8812256-48.8811035,48.8812256Z"/></svg>
-            <a href="https://geohack.toolforge.org/geohack.php?params={{ institution.lat|floatformat:",-100" }}_{% if institution.lat > 0 %}S{% else %}N{% endif %}_{{ institution.lon|floatformat:",-100" }}_{% if institution.lat > 0 %}W{% else %}E{% endif %}" aria-label="{% trans 'Coordinates' %}">
-                {{ institution.lat }}, {{ institution.lon }}
-            </a>
-        {% else %}{% trans "No coordinates" %}{% endif %}</p>
+    <p><a href="{% url 'list_education_programs_by_institution' %}" aria-label="{% trans 'Education programs by institution' %}">{% trans "Click here to see the education programs divided by institution" %}</a></p>
+    {% for professor in professors %}
+        <h2 id="{{ professor.id }}">{{ professor.name }}</h2>
+        {% if professor.username %}<p>{% trans "Username" %}: {{ professor.username }}</p>{% endif %}
         <div class="userform">
-            <table id="education_programs_{{ institution.id }}" class="table table-striped table-fixed"
+            <table id="education_programs_{{ professor.id }}" class="table table-striped table-fixed"
                    data-mobile-responsive="true"
                    data-check-on-init="true"
                    data-filter-control="true"
@@ -33,7 +28,7 @@
                     <tr>
                         <th data-field="id" data-sortable="true">{% trans "ID" %}</th>
                         <th data-field="name" data-sortable="true">{% trans "Course" %}</th>
-                        <th data-field="professors" data-sortable="true">{% trans "Professors" %}</th>
+                        <th data-field="institution" data-sortable="true">{% trans "Institution" %}</th>
                         <th data-field="start_date" data-sorter="datesSorter" data-sortable="true">{% trans "Start date" %}</th>
                         <th data-field="end_date" data-sorter="datesSorter" data-sortable="true">{% trans "End date" %}</th>
                         <th data-field="course_type" data-sortable="true">{% trans "Course type" %}</th>
@@ -41,14 +36,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for program in institution.education_program_institution.all %}
+                    {% for program in professor.education_program_professor.all %}
                         <tr>
                             <th scope="row">{{ program.id }}</th>
                             <td>{% if program.link %}<a href="{{ program.link }}" aria-label="{{ program.name }}">{{ program.name }}</a>{% else %}{{ program.name }}{% endif %}</td>
                             <td>
                                 <ul>
-                                    {% for professor in program.professor.all %}
-                                        <li><a href="{{ professor.username }}" aria-label="{{ professor.name }}">{{ professor.name }}</a></li>
+                                    {% for institution in program.institution.all %}
+                                        <li>
+                                            <a href="{{ institution.posta_code }}" aria-label="{{ institution.name }}">{{ institution.name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </td>

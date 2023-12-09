@@ -2,7 +2,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import EducationProgramForm, ProfessorFormset, InstitutionFormset, UpdateInstitutionForm
-from .models import EducationProgram, Institution
+from .models import EducationProgram, Institution, Professor
 from .wiki import edit_page, build_states, build_mapframe, get_number_of_students_of_a_outreach_dashboard_program
 from django.utils.translation import gettext_lazy as _
 
@@ -129,6 +129,12 @@ def list_institutions(request):
     institutions = Institution.objects.all().order_by("name")
     context = {"institutions": institutions}
     return render(request, "education_program/list_education_programs_by_institution.html", context)
+
+
+def list_professors(request):
+    professors = Professor.objects.all().order_by("name")
+    context = {"professors": professors}
+    return render(request, "education_program/list_education_programs_by_professor.html", context)
 
 
 def lang_ptbr_converter(lang):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-09 16:45-0300\n"
+"POT-Creation-Date: 2023-12-09 17:02-0300\n"
 "PO-Revision-Date: 2023-09-22 21:54+0300\n"
 "Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
 "Language: pt-br\n"
@@ -545,16 +545,18 @@ msgstr "Nome do curso"
 
 #: .\education_program\models.py:41
 #: .\templates\education_program\add_education_program.html:48
-#: .\templates\education_program\list_education_programs.html:32
-#: .\templates\education_program\list_education_programs_by_institution.html:36
+#: .\templates\education_program\list_education_programs.html:33
+#: .\templates\education_program\list_education_programs_by_institution.html:37
+#: .\templates\education_program\list_education_programs_by_professor.html:32
 #: .\templates\education_program\update_education_program.html:51
 msgid "Start date"
 msgstr "Data de início"
 
 #: .\education_program\models.py:42
 #: .\templates\education_program\add_education_program.html:50
-#: .\templates\education_program\list_education_programs.html:33
-#: .\templates\education_program\list_education_programs_by_institution.html:37
+#: .\templates\education_program\list_education_programs.html:34
+#: .\templates\education_program\list_education_programs_by_institution.html:38
+#: .\templates\education_program\list_education_programs_by_professor.html:33
 #: .\templates\education_program\update_education_program.html:53
 msgid "End date"
 msgstr "Data de encerramento"
@@ -567,8 +569,9 @@ msgstr "Link"
 
 #: .\education_program\models.py:44
 #: .\templates\education_program\add_education_program.html:54
-#: .\templates\education_program\list_education_programs.html:34
-#: .\templates\education_program\list_education_programs_by_institution.html:38
+#: .\templates\education_program\list_education_programs.html:35
+#: .\templates\education_program\list_education_programs_by_institution.html:39
+#: .\templates\education_program\list_education_programs_by_professor.html:34
 #: .\templates\education_program\update_education_program.html:57
 msgid "Course type"
 msgstr "Tipo de curso"
@@ -576,7 +579,8 @@ msgstr "Tipo de curso"
 #: .\education_program\models.py:45
 #: .\templates\education_program\add_education_program.html:33
 #: .\templates\education_program\add_education_program.html:142
-#: .\templates\education_program\list_education_programs.html:30
+#: .\templates\education_program\list_education_programs.html:31
+#: .\templates\education_program\list_education_programs_by_professor.html:31
 #: .\templates\education_program\update_education_program.html:36
 #: .\templates\education_program\update_education_program.html:148
 msgid "Institution"
@@ -613,6 +617,7 @@ msgstr "Certificados do WikiConecta's"
 #: .\templates\certificate\manage_certificates.html:14
 #: .\templates\education_program\add_education_program.html:78
 #: .\templates\education_program\add_education_program.html:123
+#: .\templates\education_program\list_education_programs_by_professor.html:18
 #: .\templates\education_program\update_education_program.html:84
 #: .\templates\education_program\update_education_program.html:129
 msgid "Username"
@@ -701,8 +706,9 @@ msgid "Add more institutions"
 msgstr "Adicionar mais instituições"
 
 #: .\templates\education_program\add_education_program.html:69
-#: .\templates\education_program\list_education_programs.html:35
-#: .\templates\education_program\list_education_programs_by_institution.html:39
+#: .\templates\education_program\list_education_programs.html:36
+#: .\templates\education_program\list_education_programs_by_institution.html:40
+#: .\templates\education_program\list_education_programs_by_professor.html:35
 #: .\templates\education_program\update_education_program.html:72
 msgid "Number of students"
 msgstr "Número de estudantes"
@@ -728,29 +734,44 @@ msgid "List of education programs"
 msgstr "Lista de programas de educação"
 
 #: .\templates\education_program\list_education_programs.html:14
+#: .\templates\education_program\list_education_programs_by_professor.html:15
 msgid "Education programs by institution"
 msgstr "Programas de educação por instituição"
 
 #: .\templates\education_program\list_education_programs.html:14
+#: .\templates\education_program\list_education_programs_by_professor.html:15
 msgid "Click here to see the education programs divided by institution"
-msgstr "Clique aqui para ver os programas de educação divididos por instituição"
+msgstr ""
+"Clique aqui para ver os programas de educação divididos por instituição"
 
-#: .\templates\education_program\list_education_programs.html:17
+#: .\templates\education_program\list_education_programs.html:15
+#: .\templates\education_program\list_education_programs_by_institution.html:15
+msgid "Education programs by professor"
+msgstr "Programas de educação por professor(a)"
+
+#: .\templates\education_program\list_education_programs.html:15
+#: .\templates\education_program\list_education_programs_by_institution.html:15
+msgid "Click here to see the education programs divided by professor"
+msgstr "Clique aqui para ver os programas de educação divididos por professor(a)"
+
+#: .\templates\education_program\list_education_programs.html:18
 msgid "Search"
 msgstr "Pesquisar"
 
-#: .\templates\education_program\list_education_programs.html:28
-#: .\templates\education_program\list_education_programs_by_institution.html:33
+#: .\templates\education_program\list_education_programs.html:29
+#: .\templates\education_program\list_education_programs_by_institution.html:34
+#: .\templates\education_program\list_education_programs_by_professor.html:29
 msgid "ID"
 msgstr "ID"
 
-#: .\templates\education_program\list_education_programs.html:29
-#: .\templates\education_program\list_education_programs_by_institution.html:34
+#: .\templates\education_program\list_education_programs.html:30
+#: .\templates\education_program\list_education_programs_by_institution.html:35
+#: .\templates\education_program\list_education_programs_by_professor.html:30
 msgid "Course"
 msgstr "Nome do curso"
 
-#: .\templates\education_program\list_education_programs.html:31
-#: .\templates\education_program\list_education_programs_by_institution.html:35
+#: .\templates\education_program\list_education_programs.html:32
+#: .\templates\education_program\list_education_programs_by_institution.html:36
 msgid "Professors"
 msgstr "Professores(as)"
 
@@ -763,20 +784,30 @@ msgid "List of education programs by institution"
 msgstr "Lista de programas de educação por instituição"
 
 #: .\templates\education_program\list_education_programs_by_institution.html:14
+#: .\templates\education_program\list_education_programs_by_professor.html:14
 msgid "Education programs"
 msgstr "Programas de educação"
 
 #: .\templates\education_program\list_education_programs_by_institution.html:14
+#: .\templates\education_program\list_education_programs_by_professor.html:14
 msgid "Click here to see the general table of education programs"
 msgstr "Clique aqui para ver a tabela geral de programas de educação"
 
-#: .\templates\education_program\list_education_programs_by_institution.html:19
+#: .\templates\education_program\list_education_programs_by_institution.html:20
 msgid "Coordinates"
 msgstr "Coordenadas"
 
-#: .\templates\education_program\list_education_programs_by_institution.html:22
+#: .\templates\education_program\list_education_programs_by_institution.html:23
 msgid "No coordinates"
 msgstr "Sem coordenadas"
+
+#: .\templates\education_program\list_education_programs_by_professor.html:5
+msgid "Education Programs by Professor"
+msgstr "Programas de Educação por Professor(a)"
+
+#: .\templates\education_program\list_education_programs_by_professor.html:13
+msgid "List of education programs by professor"
+msgstr "Lista de programas de educação por professor(a)"
 
 #: .\templates\education_program\update_education_program.html:5
 #: .\templates\education_program\update_education_program.html:11

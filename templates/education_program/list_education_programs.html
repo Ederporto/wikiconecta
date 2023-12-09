@@ -12,6 +12,7 @@
 {% block content %}
     <h1>{% trans "List of education programs" %}</h1>
     <p><a href="{% url 'list_education_programs_by_institution' %}" aria-label="{% trans 'Education programs by institution' %}">{% trans "Click here to see the education programs divided by institution" %}</a></p>
+    <p><a href="{% url 'list_education_programs_by_professor' %}" aria-label="{% trans 'Education programs by professor' %}">{% trans "Click here to see the education programs divided by professor" %}</a></p>
     <div class="userform">
         <div class="w3-row">
             <div class="w3-half formfield"><input id="customSearch" type="search" placeholder="{% trans 'Search' %}" aria-label="{% trans 'Search' %}" autocomplete="on" ></div>
