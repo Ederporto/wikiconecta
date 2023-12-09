@@ -44,14 +44,14 @@
                         <td>
                             <ul>
                                 {% for institution in program.institution.all %}
-                                    <li><a href="{{ institution.posta_code }}" aria-label="{{ institution.name }}">{{ institution.name }}</a></li>
+                                    <li><a href="{% url 'list_education_programs_by_institution' %}#{{ institution.id }}" aria-label="{{ institution.name }}">{{ institution.name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </td>
                         <td>
                             <ul>
                                 {% for professor in program.professor.all %}
-                                    <li><a href="{{ professor.username }}" aria-label="{{ professor.name }}">{{ professor.name }}</a></li>
+                                    <li><a href="{% url 'list_education_programs_by_professor' %}#{{ professor.id }}" aria-label="{{ professor.name }}">{{ professor.name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </td>
