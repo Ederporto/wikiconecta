@@ -59,6 +59,8 @@ def profile(request):
 
 
 def update_list_of_participants(request):
+    Participant.objects.all().delete()
+
     list_of_usernames = get_list_of_participants()
     list_of_participants = [Participant(username=username) for username in list_of_usernames]
     Participant.objects.bulk_create(list_of_participants)
