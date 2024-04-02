@@ -5,6 +5,9 @@ from datetime import datetime
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as auth_logout
+from django.utils.translation import gettext_lazy as _
+from django.http import HttpResponse
+
 from .forms import UserForm
 
 from .models import User, UserModification, Participant
@@ -56,11 +59,13 @@ def profile(request):
 
 
 def update_list_of_participants(request):
-    Participant.objects.all().delete()
-
-    list_of_participants = [Participant(username=username) for username in get_list_of_participants()]
+    list_of_usernames = get_list_of_participants()
+    list_of_participants = [Participant(username=username) for username in list_of_usernames]
     Participant.objects.bulk_create(list_of_participants)
-    return redirect(reverse("homepage"))
+
+    users = User.objects.filter(username__in=list_of_usernames)
+    users.update(is_student=True)
+    return HttpResponse(_("Ok, database updated"))
 
 
 def get_list_of_participants():
