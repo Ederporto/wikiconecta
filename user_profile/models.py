@@ -60,6 +60,7 @@ class UserModification(models.Model):
 class Participant(models.Model):
     username = models.CharField(_("username"), max_length=150, blank=True)
     last_date = models.DateTimeField(auto_now=True)
+    enrolled_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.username

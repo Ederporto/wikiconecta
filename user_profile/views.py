@@ -59,25 +59,35 @@ def profile(request):
 
 
 def update_list_of_participants(request):
-    Participant.objects.all().delete()
+    participants_data = get_list_of_participants()
+    list_of_new_participants_usernames = []
 
-    list_of_usernames = get_list_of_participants()
-    list_of_participants = [Participant(username=username) for username in list_of_usernames]
-    Participant.objects.bulk_create(list_of_participants)
+    for participant_data in participants_data:
+        participant, created = Participant.objects.get_or_create(username=participant_data['username'])
+        participant.enrolled_at = participant_data['enrolled_at']
+        participant.save()
 
-    users = User.objects.filter(username__in=list_of_usernames)
+        if created:
+            list_of_new_participants_usernames.append(participant.username)
+
+    users = User.objects.filter(username__in=list_of_new_participants_usernames)
     users.update(is_student=True)
-    return HttpResponse(_("Ok, database updated"))
+    return HttpResponse(_("Ok, database updated"), status=200)
 
 
 def get_list_of_participants():
-    url = "https://outreachdashboard.wmflabs.org/course_students_csv"
-    params = {"course": "Grupo_de_Usuários_Wiki_Movimento_Brasil/WikiConecta"}
-
-    response = requests.get(url, params=params)
-    content = StringIO(response.content.decode())
-    df = pd.read_csv(content)
-    return list(df["username"])
+    url = "https://outreachdashboard.wmflabs.org/courses/Grupo_de_Usuários_Wiki_Movimento_Brasil/WikiConecta/users.json"
+    response = requests.get(url)
+    usernames = []
+    try:
+        data = response.json()
+        user_dict_list = data["course"]["users"]
+        usernames = [{"username": item["username"],
+                      "enrolled_at": datetime.strptime(item["enrolled_at"], "%Y-%m-%dT%H:%M:%S.%fZ")}
+                     for item in user_dict_list]
+    except:
+        pass
+    return usernames
 
 
 def login_oauth(request):

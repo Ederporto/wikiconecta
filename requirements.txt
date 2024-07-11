@@ -1,11 +1,11 @@
-django~=4.2.5
+django
 social-auth-app-django
 whitenoise
-pandas~=2.1.0
-fpdf~=1.7.2
-requests~=2.31.0
+pandas
+fpdf
+requests
 mysqlclient
 babel
 geopy
-oauthlib~=3.2.2
+oauthlib
 brazilcep
