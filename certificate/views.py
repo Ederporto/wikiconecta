@@ -11,6 +11,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.forms import formset_factory
 from django.http import HttpResponse
 from django.shortcuts import render, reverse, redirect
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
 
@@ -33,7 +34,7 @@ def certificate(request):
             formset = ActivitiesForm(request.POST)
             if formset.is_valid():
                 for form in formset:
-                    form_id = int(form.prefix.replace("form-", "")) + 2 # Activities start in the 2nd module
+                    form_id = int(form.prefix.replace("form-", "")) + 2  # Activities start in the 2nd module
                     try:
                         activity_link = ActivityLink.objects.get(module_id=form_id, user=user)
                         activity_link.link = form.cleaned_data["link"]
@@ -42,9 +43,10 @@ def certificate(request):
                         ActivityLink.objects.create(module_id=form_id,
                                                     user=user,
                                                     link=form.cleaned_data["link"])
-                    user.requested_certificate = True
-                    user.date_of_request = datetime.now()
-                    user.save()
+                send_email_to_coordinator(user)
+                user.requested_certificate = True
+                user.date_of_request = datetime.now(tz=timezone.utc)
+                user.save()
         else:
             if ActivityLink.objects.filter(user=user).exists():
                 formset = ActivitiesForm(initial=[
@@ -437,10 +439,10 @@ def build_message(problems, user):
     :return: the message to send to the user via email
     """
     message_parts = {
-        "greetings": str(_("""Dear {name},\n\nWe hope this message finds you well. We want to inform you about the status of your participation in the <b>WikiConecta</b> online course.""").format(name=user.first_name)),
-        "with_problems": str(_("""After a thorough review of your assessments of the course, we noticed that you've encountered some challenges with specific assignments or assessments. While your overall engagement and commitment to the course have been commendable, we want to ensure that you have a full grasp of the subjects of the course.\nWe appreciate your dedication to the course and your willingness to engage with the material. We want to emphasize that our goal is to support your learning journey. To that end, we invite you to work on the assignments and resubmit them for reevaluation.\n\nThe list of modules in which we identified problems in the assignments is available below. If you have any questions or concerns about them or about our evaluation, please feel free to contact the organizers of the course.\n\n<b>List of modules</b>""")),
-        "without_problems": str(_("""We're from the <b><i>Wiki Movement Brazil User Group</i></b> are excited to inform you that your <b>Certificate of Completion</b> for the WikiConecta online course is now ready for download and verification.\n\nYou successfully completed all the required assignments, demonstrating your dedication and commitment to learning. You certificate serves as a testament to your accomplishment in WikiConecta and your commitment to contribute in building the Free Knowledge ecossystem\n\nAttatched you will find your certificate.""")),
-        "signature": str(_("""<font style='color:#4A51D2; font-weight:bold; font-style:italic;'>WikiConecta: Wikipedia in all its extension</font>\n<a target='_blank' href='https://pt.wikiversity.org/wiki/WikiConecta'>pt.wikiversity.org/wiki/WikiConecta</a>""")),
+        "greetings": str(_("""Dear {name},<br><br>We hope this message finds you well. We want to inform you about the status of your participation in the <b>WikiConecta</b> online course.""").format(name=user.first_name)),
+        "with_problems": str(_("""After a thorough review of your assessments of the course, we noticed that you've encountered some challenges with specific assignments or assessments. While your overall engagement and commitment to the course have been commendable, we want to ensure that you have a full grasp of the subjects of the course.<br>We appreciate your dedication to the course and your willingness to engage with the material. We want to emphasize that our goal is to support your learning journey. To that end, we invite you to work on the assignments and resubmit them for reevaluation.<br><br>The list of modules in which we identified problems in the assignments is available below. If you have any questions or concerns about them or about our evaluation, please feel free to contact the organizers of the course.<br><br><b>List of modules</b>""")),
+        "without_problems": str(_("""We're from the <b><i>Wiki Movement Brazil User Group</i></b> are excited to inform you that your <b>Certificate of Completion</b> for the WikiConecta online course is now ready for download and verification.<br><br>You successfully completed all the required assignments, demonstrating your dedication and commitment to learning. You certificate serves as a testament to your accomplishment in WikiConecta and your commitment to contribute in building the Free Knowledge ecossystem<br><br>Attatched you will find your certificate.""")),
+        "signature": str(_("""<font style='color:#4A51D2; font-weight:bold; font-style:italic;'>WikiConecta: Wikipedia in all its extension</font><br><a target='_blank' href='https://pt.wikiversity.org/wiki/WikiConecta'>https://pt.wikiversity.org/wiki/WikiConecta</a>""")),
         "1": str(_("""<li><i>Module 1 - Introduction</i></li>""")),
         "2": str(_("""<li><i>Module 2 - Wikipedia</i></li>""")),
         "3": str(_("""<li><i>Module 3 - Wikidata</i></li>""")),
@@ -451,14 +453,14 @@ def build_message(problems, user):
 
     message = message_parts["greetings"]
     if not problems:
-        message += "\n\n" + message_parts["without_problems"]
+        message += "<br><br>" + message_parts["without_problems"]
     else:
-        message += "\n\n" + message_parts["with_problems"] + "\n<ul>"
+        message += "<br><br>" + message_parts["with_problems"] + "<br><ul>"
         for problem in problems:
             message += message_parts[problem]
-        message += "\n</ul>"
+        message += "<br></ul>"
 
-    message += "\n\n" + message_parts["signature"]
+    message += "<br><br>" + message_parts["signature"]
 
     return message
 
@@ -478,10 +480,12 @@ def send_email_to_user(problems, username):
     subject = str(_("WikiConecta - Certificate of Completion request"))
 
     message = EmailMultiAlternatives(subject=subject,
-                                     body=body,
+                                     body="",
                                      from_email=from_email,
                                      to=to,
                                      bcc=bcc)
+
+    message.attach_alternative(body, "text/html")
     if not problems:
         message.attach(filename=str(_("WikiConecta - Certificate of Completion - {name}.pdf")).format(name=username),
                        content=generate_certificate(user_obj.id),
@@ -490,3 +494,39 @@ def send_email_to_user(problems, username):
     message.send()
 
     return redirect(reverse("manage_certificates"))
+
+
+def build_message_for_coordinator(user):
+    """
+    Builds the message to the coordinators relaying that a participant solicited a certificate to the coordinators
+    :param user: participant that solicited the certificate
+    :return: the message to send to the coordinator via email
+    """
+    message_parts = {
+        "greetings": str(_("""Dear coordinators,<br><br>The participant {name} (User:{username}) of the <b>WikiConecta</b> online course has requested that you review their activities and, if correct, send them a certificate of conclusion of the course.""").format(name=user.first_name + " " + user.last_name, username=user.username)),
+        "instructions": str(_("""You can find this and other participants with pending evaluations at https://wikiconecta.toolforge.org/manage_certificates.""")),
+        "signature": str(_("""<font style='color:#4A51D2; font-weight:bold; font-style:italic;'>WikiConecta: Wikipedia in all its extension</font><br><a target='_blank' href='https://pt.wikiversity.org/wiki/WikiConecta'>https://pt.wikiversity.org/wiki/WikiConecta</a>"""))
+    }
+
+    message = message_parts["greetings"] + "<br><br>" + message_parts["instructions"] + "<br><br>" + message_parts["signature"]
+
+    return message
+
+
+def send_email_to_coordinator(user):
+    """
+    Sends an email with a message to the coordinator informing that the participant requested a certificate
+    :param User user: participant requesting certificate
+    """
+    from_email = settings.EMAIL_HOST_USER
+    to = settings.COORDINATORS_EMAILS
+    body = build_message_for_coordinator(user)
+    subject = str(_("WikiConecta - Certificate of Completion request"))
+
+    message = EmailMultiAlternatives(subject=subject,
+                                     body="",
+                                     from_email=from_email,
+                                     to=to)
+
+    message.attach_alternative(body, "text/html")
+    message.send()
