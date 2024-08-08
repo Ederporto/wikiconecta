@@ -472,7 +472,7 @@ msgid ""
 "activities and, if correct, send them a certificate of conclusion of the "
 "course."
 msgstr ""
-"Olá, coordenadores(as), <br><br> O(A) participante {name} (Usuário(a):{username} do "
+"Olá, coordenadores(as), <br><br> O(A) participante {name} (Usuário(a):{username}) do "
 "curso online <b>WikiConecta</b> está requisitando que você revise suas atividades e, "
 "se corretas, lhe envie o certificado de conclusão do curso."
 
