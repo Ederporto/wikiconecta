@@ -503,7 +503,7 @@ def build_message_for_coordinator(user):
     :return: the message to send to the coordinator via email
     """
     message_parts = {
-        "greetings": str(_("""Dear coordinators,<br><br>The participant {name} (User:{username}) of the <b>WikiConecta</b> online course has requested that you review their activities and, if correct, send them a certificate of conclusion of the course.""").format(name=user.first_name + " " + user.last_name, username=user.username)),
+        "greetings": str(_("""Dear coordinators,<br><br>The participant <b>{name} (User:{username})</b> of the <b>WikiConecta</b> online course has requested that you review their activities and, if correct, send them a certificate of conclusion of the course.""").format(name=user.first_name + " " + user.last_name, username=user.username)),
         "instructions": str(_("""You can find this and other participants with pending evaluations at https://wikiconecta.toolforge.org/manage_certificates.""")),
         "signature": str(_("""<font style='color:#4A51D2; font-weight:bold; font-style:italic;'>WikiConecta: Wikipedia in all its extension</font><br><a target='_blank' href='https://pt.wikiversity.org/wiki/WikiConecta'>https://pt.wikiversity.org/wiki/WikiConecta</a>"""))
     }
