@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-08 00:11-0300\n"
+"POT-Creation-Date: 2024-08-19 19:44-0300\n"
 "PO-Revision-Date: 2023-09-22 21:54+0300\n"
 "Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
 "Language: pt-br\n"
@@ -86,7 +86,7 @@ msgid ""
 "required, asynchronously and independently, and the course is available on "
 "an open online education platform, the Wikiversity.\n"
 "\n"
-"The units were developed by Professor Amanda Chevtchouk Jurno, PhD, "
+"The units were developed by Professor Amanda Chevtchouk Jurno, PhD, former "
 "Education and Scientific Dissemination Manager at Wiki Movimento Brasil, "
 "with scientific guidance from Professor João Alexandre Peschanski, PhD, "
 "Executive Director of Wiki Movimento Brasil. In order to adapt the content "
@@ -111,7 +111,7 @@ msgstr ""
 "Wikiversidade.\n"
 "\n"
 "As unidades foram desenvolvidas pela Professora Doutora Amanda Chevtchouk "
-"Jurno, Gestora de Educação e Difusão Científica do Wiki Movimento Brasil, "
+"Jurno, ex-gestora de Educação e Difusão Científica do Wiki Movimento Brasil, "
 "com orientação científica do Professor Doutor João Alexandre Peschanski, "
 "Diretor Executivo do Wiki Movimento Brasil. A fim de adequar o conteúdo às "
 "expectativas do Movimento Wikimedia e garantir que este cobrisse as "
@@ -308,19 +308,19 @@ msgstr ""
 "\n"
 "Atenciosamente,"
 
-#: .\certificate\views.py:316 .\certificate\views.py:411
+#: .\certificate\views.py:316
 msgid ""
 "_________________________________\n"
-"AMANDA CHEVTCHOUK JURNO\n"
+"ALEXANDER MAXIMILIAN HILSENBECK FILHO\n"
 "Coordinator\n"
 "WikiConecta"
 msgstr ""
 "_________________________________\n"
-"AMANDA CHEVTCHOUK JURNO\n"
-"Coordenadora\n"
+"ALEXANDER MAXIMILIAN HILSENBECK FILHO\n"
+"Coordenador\n"
 "WikiConecta"
 
-#: .\certificate\views.py:319 .\certificate\views.py:416
+#: .\certificate\views.py:319 .\certificate\views.py:418
 msgid ""
 "_________________________________\n"
 "JOÃO ALEXANDRE PESCHANSKI\n"
@@ -348,7 +348,19 @@ msgstr "por ter completado as leituras e atividades do curso online"
 msgid "Initiative:"
 msgstr "Iniciativa"
 
-#: .\certificate\views.py:421
+#: .\certificate\views.py:412
+msgid ""
+"_______________________________________\n"
+"ALEXANDER MAXIMILIAN HILSENBECK FILHO\n"
+"Coordinator\n"
+"WikiConecta"
+msgstr ""
+"_______________________________________\n"
+"ALEXANDER MAXIMILIAN HILSENBECK FILHO\n"
+"Coordenador\n"
+"WikiConecta"
+
+#: .\certificate\views.py:423
 msgid ""
 "The WikiConecta course does not have record control, readings and tasks are "
 "freely accessible.\n"
@@ -360,7 +372,7 @@ msgstr ""
 "Este certificado, portanto, não é reconhecido como um diploma oficial.\n"
 "O curso totaliza para sua realização vinte horas."
 
-#: .\certificate\views.py:442
+#: .\certificate\views.py:444
 #, python-brace-format
 msgid ""
 "Dear {name},<br><br>We hope this message finds you well. We want to inform "
@@ -371,7 +383,7 @@ msgstr ""
 "Queremos te informar sobre o status da sua participação no curso online "
 "<b>WikiConecta</b>."
 
-#: .\certificate\views.py:443
+#: .\certificate\views.py:445
 msgid ""
 "After a thorough review of your assessments of the course, we noticed that "
 "you've encountered some challenges with specific assignments or assessments. "
@@ -398,7 +410,7 @@ msgstr ""
 "ou preocupação sobre eles ou sobre nossa avaliação, não hesite em contactar "
 "os organizadores do curso.<br><br><b>Lista de módulos</b>"
 
-#: .\certificate\views.py:444
+#: .\certificate\views.py:446
 msgid ""
 "We're from the <b><i>Wiki Movement Brazil User Group</i></b> are excited to "
 "inform you that your <b>Certificate of Completion</b> for the WikiConecta "
@@ -418,7 +430,7 @@ msgstr ""
 "o ecossistema do Conhecimento Livre<br><br>Em anexo você encontrará seu "
 "certificado."
 
-#: .\certificate\views.py:445 .\certificate\views.py:508
+#: .\certificate\views.py:447 .\certificate\views.py:510
 msgid ""
 "<font style='color:#4A51D2; font-weight:bold; font-style:"
 "italic;'>WikiConecta: Wikipedia in all its extension</font><br><a "
@@ -430,40 +442,40 @@ msgstr ""
 "target='_blank' href='https://pt.wikiversity.org/wiki/WikiConecta'>https://"
 "pt.wikiversity.org/wiki/WikiConecta</a>"
 
-#: .\certificate\views.py:446
+#: .\certificate\views.py:448
 msgid "<li><i>Module 1 - Introduction</i></li>"
 msgstr "<li><i>Módulo 1 - Introdução</i></li>"
 
-#: .\certificate\views.py:447
+#: .\certificate\views.py:449
 msgid "<li><i>Module 2 - Wikipedia</i></li>"
 msgstr "<li><i>Módulo 2 - A Wikipédia</i></li>"
 
-#: .\certificate\views.py:448
+#: .\certificate\views.py:450
 msgid "<li><i>Module 3 - Wikidata</i></li>"
 msgstr "<li><i>Módulo 3 - O Wikidata</i></li>"
 
-#: .\certificate\views.py:449
+#: .\certificate\views.py:451
 msgid "<li><i>Module 4 - Wikimedia Commons</i></li>"
 msgstr "<li><i>Módulo 4 - O Wikimedia Commons</i></li>"
 
-#: .\certificate\views.py:450
+#: .\certificate\views.py:452
 msgid "<li><i>Module 5 - Wikiversity</i></li>"
 msgstr "<li><i>Módulo 5 - A Wikiversidade</i></li>"
 
-#: .\certificate\views.py:451
+#: .\certificate\views.py:453
 msgid "<li><i>Module 6 - Education programs</i></li>"
 msgstr "<li><i>Módulo 6 - Programas de educação</i></li>"
 
-#: .\certificate\views.py:480 .\certificate\views.py:524
+#: .\certificate\views.py:482 .\certificate\views.py:526
 msgid "WikiConecta - Certificate of Completion request"
 msgstr "WikiConecta - Requisição de Certificado de Conclusão"
 
-#: .\certificate\views.py:490
+#: .\certificate\views.py:492
 #, python-brace-format
 msgid "WikiConecta - Certificate of Completion - {name}.pdf"
 msgstr "WikiConecta - Certificado de Conclusão - {name}.pdf"
 
-#: .\certificate\views.py:506
+#: .\certificate\views.py:508
 #, python-brace-format
 msgid ""
 "Dear coordinators,<br><br>The participant <b>{name} (User:{username})</b> of "
@@ -476,7 +488,7 @@ msgstr ""
 "você revise suas atividades e, se corretas, lhe envie o certificado de "
 "conclusão do curso."
 
-#: .\certificate\views.py:507
+#: .\certificate\views.py:509
 msgid ""
 "You can find this and other participants with pending evaluations at https://"
 "wikiconecta.toolforge.org/manage_certificates."

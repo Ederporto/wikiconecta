@@ -217,7 +217,7 @@ def generate_enrollment_letter(user_id=None):
     # Text
     #######################################################################################################
     pdf.set_font('Times', '', 13)  # Text of the addressing in Times New Roman, bold, 13 pt
-    pdf.multi_cell(w=0, h=9, border=0, align='J', txt=str(_("""The WikiConecta course (https://w.wiki/7KwX) was developed by Wiki Movimento Brasil, a non-profit organization that works towards free knowledge under CNPJ 29.801.908/0001-86. To complete it, 20 hours of dedication are required, asynchronously and independently, and the course is available on an open online education platform, the Wikiversity.\n\nThe units were developed by Professor Amanda Chevtchouk Jurno, PhD, Education and Scientific Dissemination Manager at Wiki Movimento Brasil, with scientific guidance from Professor João Alexandre Peschanski, PhD, Executive Director of Wiki Movimento Brasil. In order to adapt the content to the expectations of the Wikimedia Movement and ensure that it covered the information necessary to introduce educators to this universe, the course had strategic guidance from senior members of the Movement working in the area of Education in various regions of the world.\n\nThe objective of the course is to present in a condensed form the information that educators need to start using the Wikimedia projects with their students, especially in university extension. At the end of the course, participants should be able to basic edit four Wikimedia projects - Wikipedia, Wikidata, Wikimedia Commons and Wikiversity - and develop their own wiki-education programs, aiming to comply with Brazilian university extension guidelines.""")),)
+    pdf.multi_cell(w=0, h=9, border=0, align='J', txt=str(_("""The WikiConecta course (https://w.wiki/7KwX) was developed by Wiki Movimento Brasil, a non-profit organization that works towards free knowledge under CNPJ 29.801.908/0001-86. To complete it, 20 hours of dedication are required, asynchronously and independently, and the course is available on an open online education platform, the Wikiversity.\n\nThe units were developed by Professor Amanda Chevtchouk Jurno, PhD, former Education and Scientific Dissemination Manager at Wiki Movimento Brasil, with scientific guidance from Professor João Alexandre Peschanski, PhD, Executive Director of Wiki Movimento Brasil. In order to adapt the content to the expectations of the Wikimedia Movement and ensure that it covered the information necessary to introduce educators to this universe, the course had strategic guidance from senior members of the Movement working in the area of Education in various regions of the world.\n\nThe objective of the course is to present in a condensed form the information that educators need to start using the Wikimedia projects with their students, especially in university extension. At the end of the course, participants should be able to basic edit four Wikimedia projects - Wikipedia, Wikidata, Wikimedia Commons and Wikiversity - and develop their own wiki-education programs, aiming to comply with Brazilian university extension guidelines.""")),)
 
     pdf.add_page()
     pdf.set_xy(30, 30)
@@ -310,10 +310,10 @@ def generate_enrollment_letter(user_id=None):
     # Footer
     #######################################################################################################
     pdf.cell(w=0, h=13, ln=1)  # Give some space for the signatures
-    # Amanda Chevtchouk Jurno's signature
-    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/amanda.png'), x=56, y=227, w=28, h=16)
+    # Alexander Maximilian Hilsenbeck Filho's signature
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/alex.png'), x=56, y=223, w=28, h=16)
     pdf.set_y(230)
-    pdf.multi_cell(w=80, h=9, border=0, align='C', txt=str(_("_________________________________\nAMANDA CHEVTCHOUK JURNO\nCoordinator\nWikiConecta")),)
+    pdf.multi_cell(w=80, h=9, border=0, align='C', txt=str(_("_________________________________\nALEXANDER MAXIMILIAN HILSENBECK FILHO\nCoordinator\nWikiConecta")),)
     pdf.set_xy(110, 230)
     pdf.image(os.path.join(settings.STATIC_ROOT, 'images/jap.png'), x=140.5, y=227, w=18, h=16)
     pdf.multi_cell(w=80, h=9, border=0, align='C', txt=str(_("_________________________________\nJOÃO ALEXANDRE PESCHANSKI\nExecutive Director\nWiki Movimento Brasil")),)
@@ -405,11 +405,13 @@ def generate_certificate(user_id=None):
     #######################################################################################################
     # Footer
     #######################################################################################################
-    # Amanda Chevtchouk Jurno's signature
+    # Alexander Maximilian Hilsenbeck Filho's signature
     pdf.set_xy(80, 131)
     pdf.multi_cell(w=80, h=5, border=0, align='C',
-                   txt=str(_("_________________________________\nAMANDA CHEVTCHOUK JURNO\nCoordinator\nWikiConecta")), )
-    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/amanda.png'), x=106, y=125, w=28, h=16)
+                   txt=str(
+                       _("_______________________________________\nALEXANDER MAXIMILIAN HILSENBECK FILHO\nCoordinator\nWikiConecta")
+                   ), )
+    pdf.image(os.path.join(settings.STATIC_ROOT, 'images/alex.png'), x=106, y=122, w=28, h=16)
     # João Alexandre Peschanski's signature
     pdf.set_xy(155, 131)
     pdf.multi_cell(w=80, h=5, border=0, align='C', txt=str(
