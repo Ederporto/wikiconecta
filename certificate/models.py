@@ -30,7 +30,7 @@ class Certificate(models.Model):
         ("enrollment", _("Enrollment")),
         ("certificate", _("Certificate"))
     )
-    user = models.OneToOneField(User, on_delete=models.RESTRICT, related_name="user_certificate")
+    user = models.ForeignKey(User, on_delete=models.RESTRICT, related_name="user_certificate")
     date_issued = models.DateTimeField(auto_now=True)
     certificate_hash = models.CharField(max_length=64, blank=True, null=True)
     certificate_type = models.CharField(max_length=12, choices=CHOICES)
