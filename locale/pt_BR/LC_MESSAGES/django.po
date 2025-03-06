@@ -633,8 +633,6 @@ msgid "WikiConecta's certificates"
 msgstr "Certificados do WikiConecta's"
 
 #: templates/certificate/manage_certificates.html:14
-#, fuzzy
-#| msgid "Enrollment"
 msgid "Enrolled at"
 msgstr "Matrícula"
 
