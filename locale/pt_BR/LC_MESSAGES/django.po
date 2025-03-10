@@ -1182,7 +1182,7 @@ msgstr "Cadastrado aqui"
 
 #: templates/user_profile/participants.html:20
 msgid "Requested certificate"
-msgstr "Gerenciar certificados"
+msgstr "Pediu certificado"
 
 #: templates/user_profile/participants.html:28
 #: templates/user_profile/participants.html:29

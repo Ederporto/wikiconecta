@@ -111,6 +111,6 @@ def participants(request):
             available_years.add(participant.enrolled_at.year)
     data = {
         "participants": participants,
-        "years": list(available_years),
+        "years": sorted(available_years),
     }
     return render(request, "user_profile/participants.html", data)
