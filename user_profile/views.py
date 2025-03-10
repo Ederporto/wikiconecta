@@ -99,11 +99,18 @@ def logout(request):
     return redirect(reverse('homepage'))
 
 def participants(request):
+    year = request.GET.get("year")
     participants = Participant.objects.all().order_by("-enrolled_at")
+    if year:
+        participants = participants.filter(enrolled_at__year=year)
+    available_years = set()
     for participant in participants:
         # TODO: improve performance if becomes necessary
         participant.user = User.objects.filter(username=participant.username).first()
+        if participant.enrolled_at:
+            available_years.add(participant.enrolled_at.year)
     data = {
         "participants": participants,
+        "years": list(available_years),
     }
     return render(request, "user_profile/participants.html", data)

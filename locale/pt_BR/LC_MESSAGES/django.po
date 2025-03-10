@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-10 15:08-0300\n"
+"POT-Creation-Date: 2025-03-10 15:18-0300\n"
 "PO-Revision-Date: 2023-09-22 21:54+0300\n"
 "Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
 "Language: pt-br\n"
@@ -633,7 +633,7 @@ msgid "WikiConecta's certificates"
 msgstr "Certificados do WikiConecta's"
 
 #: templates/certificate/manage_certificates.html:14
-#: templates/user_profile/participants.html:14
+#: templates/user_profile/participants.html:17
 msgid "Enrolled at"
 msgstr "Matrícula"
 
@@ -643,7 +643,7 @@ msgstr "Matrícula"
 #: templates/education_program/list_education_programs_by_professor.html:18
 #: templates/education_program/update_education_program.html:84
 #: templates/education_program/update_education_program.html:129
-#: templates/user_profile/participants.html:15
+#: templates/user_profile/participants.html:18
 msgid "Username"
 msgstr "Nome de usuário(a)"
 
@@ -660,7 +660,7 @@ msgid "Send message"
 msgstr "Enviar mensagem"
 
 #: templates/certificate/manage_certificates.html:25
-#: templates/user_profile/participants.html:22
+#: templates/user_profile/participants.html:26
 msgid "N.A."
 msgstr "N.A."
 
@@ -1173,18 +1173,24 @@ msgstr ""
 "certificação\">tutorial feito pela equipe do WMB</a>."
 
 #: templates/user_profile/participants.html:9
-msgid "WikiConecta's participants"
-msgstr "Participantes do WikiConecta"
+msgid "WikiConecta's dashboard participants"
+msgstr "Participantes do dashboard do WikiConecta"
 
-#: templates/user_profile/participants.html:16
-msgid "Registered"
-msgstr "Cadastrado"
+#: templates/user_profile/participants.html:19
+msgid "Registered here"
+msgstr "Cadastrado aqui"
 
-#: templates/user_profile/participants.html:24
+#: templates/user_profile/participants.html:20
+msgid "Requested certificate"
+msgstr "Gerenciar certificados"
+
+#: templates/user_profile/participants.html:28
+#: templates/user_profile/participants.html:29
 msgid "Yes"
 msgstr "Sim"
 
-#: templates/user_profile/participants.html:24
+#: templates/user_profile/participants.html:28
+#: templates/user_profile/participants.html:29
 msgid "No"
 msgstr "Não"
 
