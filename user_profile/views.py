@@ -100,13 +100,13 @@ def logout(request):
 
 def participants(request):
     participants = Participant.objects.all().order_by("-enrolled_at")
-    available_years = participants.values_list("enrolled_at__year", flat=True).distinct()
     active_year = request.GET.get("year")
     if active_year:
         participants = participants.filter(enrolled_at__year=active_year)
     for participant in participants:
         # TODO: improve performance if becomes necessary
         participant.user = User.objects.filter(username=participant.username).first()
+    available_years = Participant.objects.values_list("enrolled_at__year", flat=True).distinct()
     data = {
         "participants": participants,
         "active_year": active_year,
