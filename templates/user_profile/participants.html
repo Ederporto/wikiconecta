@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Participants" %}{% endblock %}
+
+{% block content %}
+    <div class="w3-container">
+        <h1>{% trans "WikiConecta's participants" %}</h1>
+        <div class="w3-container">
+            <table style="width: 100%; text-align: center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Enrolled at" %}</th>
+                        <th>{% trans "Username" %}</th>
+                        <th>{% trans "Registered" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for participant in participants %}
+                        <tr>
+                            <td>{% if participant.enrolled_at %}{{ participant.enrolled_at }}{% else %}{% trans "N.A." %}{% endif %}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{% if participant.user %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

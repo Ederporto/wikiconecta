@@ -97,3 +97,13 @@ def login_oauth(request):
 def logout(request):
     auth_logout(request)
     return redirect(reverse('homepage'))
+
+def participants(request):
+    participants = Participant.objects.all().order_by("-enrolled_at")
+    for participant in participants:
+        # TODO: improve performance if becomes necessary
+        participant.user = User.objects.filter(username=participant.username).first()
+    data = {
+        "participants": participants,
+    }
+    return render(request, "user_profile/participants.html", data)
