@@ -8,7 +8,7 @@
     <div class="w3-container">
         <h1>{% trans "WikiConecta's dashboard participants" %}</h1>
         {% for year in years %}
-        <a href="{% url 'participants' year=year %}">{{ year }}</a>
+        <a href="{% url 'participants' %}?year={{year}}">{{ year }}</a>
         {% endfor %}
         <div class="w3-container">
             <table style="width: 100%; text-align: center">
