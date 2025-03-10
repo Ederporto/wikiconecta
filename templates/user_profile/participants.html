@@ -8,9 +8,9 @@
     <div class="w3-container">
         <h1>{% trans "WikiConecta's dashboard participants" %}</h1>
         {% if years %}
-            {% if active_year %}<a href="{% url 'participants' %}">Todos</a>{% endif %}
+            <a {% if active_year %}href="{% url 'participants' %}"{% endif %}>Todos</a>
             {% for year in years %}
-            {% if year != active_year %}<a href="{% url 'participants' %}?year={{year}}">{{ year }}</a>{% endif %}
+            <a {% if year != active_year %}href="{% url 'participants' %}?year={{year}}"{% endif %}>{{ year }}</a>
             {% endfor %}
         {% endif %}
         <div class="w3-container">

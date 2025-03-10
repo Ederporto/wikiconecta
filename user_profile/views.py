@@ -101,7 +101,8 @@ def logout(request):
 def participants(request):
     participants = Participant.objects.all().order_by("-enrolled_at")
     active_year = request.GET.get("year")
-    if active_year:
+    if active_year and active_year.isdigit():
+        active_year = int(active_year)
         participants = participants.filter(enrolled_at__year=active_year)
     for participant in participants:
         # TODO: improve performance if becomes necessary
