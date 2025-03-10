@@ -7,15 +7,15 @@
 {% block content %}
     <div class="w3-container">
         <h1>{% trans "WikiConecta's dashboard participants" %}</h1>
-        <div>
-            <button hx-get="{% url 'update' %}" hx-swap="outerHTML">{% translate "Update list" %}</button>
-        </div>
         {% if years %}
             <a {% if active_year %}href="{% url 'participants' %}"{% endif %}>{% translate "All" %}</a>
             {% for year in years %}
             <a {% if year != active_year %}href="{% url 'participants' %}?year={{year}}"{% endif %}>{{ year }}</a>
             {% endfor %}
         {% endif %}
+        <span style="float: right;">
+            <a hx-get="{% url 'update' %}" >{% translate "Update list" %}</a>
+        </span>
         <div class="w3-container">
             <table style="width: 100%; text-align: center">
                 <thead>
