@@ -72,7 +72,9 @@ def update_list_of_participants(request):
 
     users = User.objects.filter(username__in=list_of_new_participants_usernames)
     users.update(is_student=True)
-    return HttpResponse(_("Ok, database updated"), status=200)
+    response = HttpResponse(_("Ok, database updated"), status=200)
+    response.headers["HX-Refresh"] = "true"
+    return response
 
 
 def get_list_of_participants():
